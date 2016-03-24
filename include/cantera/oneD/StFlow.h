@@ -22,7 +22,8 @@ const size_t c_offset_U = 0; // axial velocity
 const size_t c_offset_V = 1; // strain rate
 const size_t c_offset_T = 2; // temperature
 const size_t c_offset_L = 3; // (1/r)dP/dr
-const size_t c_offset_Y = 4; // mass fractions
+const size_t c_offset_TT = 4;   //Temperature Fluctuations
+const size_t c_offset_Y = 5;    // mass fractions
 
 // Transport option flags
 const int c_Mixav_Transport = 0;
@@ -95,11 +96,41 @@ public:
     doublereal pressure() const {
         return m_press;
     }
+	
+	 //! The current T' 
+    doublereal Tprime() const {
+        return Tprime();
+    }
+	
+	//! Set the Turbulent Kinetic Energy
+    void setTKE(doublereal TKE) {
+        m_TKE = TKE;
+    }
 
+    //! The current Turbulent Kinetic Energy
+    doublereal TKE() const {
+        return m_TKE;
+    }
+
+	//! Set the turbulent dissipation 
+    void setED(doublereal ED) {
+        m_ED = ED;
+    }
+	
+	// Getter for Turbulent Viscosity
+	void getviscTurb(doublereal* viscTurb);
+    doublereal setviscTurb(size_t j) const {
+        return viscTurb[j];
+    }
+	//! The current turbulent dissipation
+    doublereal ED() const {
+        return m_ED;
+    }
     //! Write the initial solution estimate into array x.
     virtual void _getInitialSoln(doublereal* x) {
         for (size_t j = 0; j < m_points; j++) {
             T(x,j) = m_thermo->temperature();
+            TT(x, j) = m_thermo->temperature();
             m_thermo->getMassFractions(&Y(x, 0, j));
         }
     }
@@ -332,7 +363,7 @@ protected:
         return (c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
     }
 
-    //! @name Solution components
+  //! @name Solution components
     //! @{
 
     doublereal T(const doublereal* x, size_t j) const {
@@ -345,6 +376,18 @@ protected:
         return prevSoln(c_offset_T, j);
     }
 
+	doublereal TT(const doublereal* x, size_t j) const {
+    return x[index(c_offset_TT, j)];
+	
+    }
+    doublereal& TT(doublereal* x, size_t j) {
+        return x[index(c_offset_TT, j)];
+    }
+
+    doublereal TT_prev(size_t j) const {
+        return prevSoln(c_offset_TT, j);
+    }
+	
     doublereal rho_u(const doublereal* x, size_t j) const {
         return m_rho[j]*x[index(c_offset_U, j)];
     }
@@ -402,6 +445,10 @@ protected:
         size_t jloc = (u(x,j) > 0.0 ? j : j + 1);
         return (T(x,jloc) - T(x,jloc-1))/m_dz[jloc-1];
     }
+	doublereal dudz(const doublereal* x, size_t j) const {
+		size_t jloc = (u(x, j) > 0.0 ? j : j + 1);
+		return (u(x, jloc) - u(x, jloc - 1)) / (m_z[j] - m_z[j - 1]);
+	}
     //! @}
 
     doublereal shear(const doublereal* x, size_t j) const {
@@ -410,12 +457,31 @@ protected:
         return 2.0*(c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
     }
 
-    doublereal divHeatFlux(const doublereal* x, size_t j) const {
-        doublereal c1 = m_tcon[j-1]*(T(x,j) - T(x,j-1));
-        doublereal c2 = m_tcon[j]*(T(x,j+1) - T(x,j));
-        return -2.0*(c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
+        doublereal divHeatFlux(const doublereal* x, size_t j) const {
+		//doublereal c1 = ((m_tcon[j-1])+(((m_cp[j-1]*m_rho[j-1]*m_TKE*m_TKE*0.09)/(0.85*m_ED))))*(T(x,j) - T(x,j-1));
+		//doublereal c2 = ((m_tcon[j])+(((m_cp[j]*m_rho[j]*m_TKE*m_TKE*0.09)/(0.85*m_ED))))*(T(x,j+1) - T(x,j));
+		doublereal c1 = ((m_tcon[j-1]))*(T(x,j) - T(x,j-1));
+		doublereal c2 = ((m_tcon[j]))*(T(x,j+1) - T(x,j));      
+		return -2.0*(c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
     }
 
+    doublereal divFlux_TT(const doublereal* x, size_t j) const {
+		
+		doublereal c1 = ((m_tcon[j-1]))*(TT(x,j) - TT(x,j-1));
+		doublereal c2 = ((m_tcon[j]))*(TT(x,j+1) - TT(x,j));      
+		return -2.0*(c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
+ /*       size_t jloc = (u(x,j) > 0.0 ? j : j + 1);
+		doublereal sigma_t = 0.85, dTTdx;
+		doublereal div_TT_diff, h, alpha, d2TTdx2;
+		h = z(j) - z(j - 1);
+		alpha = (z(j + 1) - z(j)) / h;
+
+		div_TT_diff = (1 / sigma_t)*((viscTurb[jloc] - viscTurb[jloc - 1]) / (z(j) - z(j - 1)));
+		dTTdx = (TT(x, jloc) - TT(x, jloc-1)) / (z(j) - z(j-1));
+		d2TTdx2 = (-(TT(x, jloc) - TT(x, jloc + 1))*h + (TT(x, jloc - 1) - TT(x, jloc))*alpha*h) / (h*h*h * alpha);
+
+		return div_TT_diff*dTTdx + (viscTurb[jloc]/sigma_t) * d2TTdx2; */
+		}
     size_t mindex(size_t k, size_t j, size_t m) {
         return m*m_nsp*m_nsp + m_nsp*j + k;
     }
@@ -440,6 +506,12 @@ protected:
     vector_fp m_wt;
     vector_fp m_cp;
 
+	//Epsilon
+	doublereal m_ED;
+	//Turbulent Kinetic Energy
+	doublereal m_TKE;
+	vector_fp viscTurb;
+	
     // transport properties
     vector_fp m_visc;
     vector_fp m_tcon;

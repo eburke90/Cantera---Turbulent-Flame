@@ -615,6 +615,8 @@ cdef extern from "cantera/oneD/Inlet1D.h":
     cdef cppclass CxxBdry1D "Cantera::Bdry1D":
         double temperature()
         void setTemperature(double)
+        double temperature_fluc()
+        void setTemperature_fluc(double)
         double mdot()
         void setMdot(double)
         size_t nSpecies()
@@ -655,6 +657,11 @@ cdef extern from "cantera/oneD/StFlow.h":
         void enableRadiation(cbool)
         cbool radiationEnabled()
         double pressure()
+        void setTKE(double)
+        double TKE()
+        void setED(double)
+        void getviscTurb(double*) except +
+        double ED()
         void setFixedTempProfile(vector[double]&, vector[double]&)
         void setBoundaryEmissivities(double, double)
         void solveEnergyEqn()

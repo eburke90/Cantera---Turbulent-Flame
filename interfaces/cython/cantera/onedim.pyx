@@ -1,3 +1,5 @@
+
+import csv
 import interrupts
 
 cdef class Domain1D:
@@ -186,6 +188,13 @@ cdef class Boundary1D(Domain1D):
         def __set__(self, T):
             self.boundary.setTemperature(T)
 
+    property Tprime:
+        """ The temperature fluctuation [K] at this boundary. """
+        def __get__(self):
+            return self.boundary.temperature_fluc()
+        def __set__(self, Tprime):
+            self.boundary.setTemperature_fluc(Tprime)
+
     property mdot:
         """ The mass flow rate per unit area [kg/m^2] """
         def __get__(self):
@@ -205,6 +214,7 @@ cdef class Boundary1D(Domain1D):
         def __set__(self, X):
             self.phase.TPX = None, None, X
             cdef np.ndarray[np.double_t, ndim=1] data = self.phase.X
+
             self.boundary.setMoleFractions(&data[0])
 
     property Y:
@@ -338,6 +348,22 @@ cdef class _FlowBase(Domain1D):
             return self.flow.pressure()
         def __set__(self, P):
             self.flow.setPressure(P)
+    property TKE:
+        """ Turbulent Kinetic Energy """
+        def __set__(self, TKE):
+            self.flow.setTKE(TKE)
+			
+    property ED:
+        """ Turbulent Dissipation """
+        def __set__(self, ED):
+            self.flow.setED(ED)
+
+    property ViscTurb:
+        """The chemical potentials of all species [J/kmol]."""
+        def __get__(self):
+            cdef np.ndarray[np.double_t, ndim=1] data = np.empty(self.n_points)
+            self.flow.getviscTurb(&data[0])
+            return data	
 
     def set_transport(self, _SolutionBase phase):
         """
@@ -410,6 +436,7 @@ cdef class FreeFlow(_FlowBase):
     def __cinit__(self, _SolutionBase thermo, *args, **kwargs):
         gas = getIdealGasPhase(thermo)
         self.flow = <CxxStFlow*>(new CxxFreeFlame(gas, thermo.n_species, 2))
+
 
 
 cdef class AxisymmetricStagnationFlow(_FlowBase):
@@ -804,8 +831,10 @@ cdef class Sim1D:
 
     def clear_stats(self):
         """
+
         Clear solver statistics.
         """
+
         self.sim.clearStats()
 
     def __dealloc__(self):

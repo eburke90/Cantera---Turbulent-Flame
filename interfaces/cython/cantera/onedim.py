@@ -138,6 +138,11 @@ class FlameBase(Sim1D):
         return self.profile(self.flame, 'T')
 
     @property
+    def T_Prime(self):
+        """ Array containing the temperature fluctuations [K] at each grid point. """
+        return self.profile(self.flame, 'T_Prime')			
+
+    @property
     def u(self):
         """
         Array containing the velocity [m/s] normal to the flame at each point.
@@ -264,14 +269,17 @@ class FlameBase(Sim1D):
         T = self.T
         u = self.u
         V = self.V
+        TPrime = self.profile(self.flame, 'T_Prime')
+
+
 
         csvfile = open(filename, 'w')
         writer = _csv.writer(csvfile)
-        writer.writerow(['z (m)', 'u (m/s)', 'V (1/s)',
+        writer.writerow(['z (m)','Tprime (K)' 'u (m/s)', 'V (1/s)',
                          'T (K)', 'rho (kg/m3)'] + self.gas.species_names)
         for n in range(self.flame.n_points):
             self.set_gas_state(n)
-            writer.writerow([z[n], u[n], V[n], T[n], self.gas.density] +
+            writer.writerow([z[n], TPrime[n], u[n], V[n], T[n], self.gas.density] +
                             list(getattr(self.gas, species)))
         csvfile.close()
         if not quiet:
@@ -394,6 +402,7 @@ class FreeFlame(FlameBase):
         u0 = self.inlet.mdot/self.gas.density
         T0 = self.inlet.T
 
+
         # get adiabatic flame temperature and composition
         self.gas.equilibrate('HP')
         Teq = self.gas.T
@@ -403,6 +412,7 @@ class FreeFlame(FlameBase):
         locs = [0.0, 0.3, 0.5, 1.0]
         self.set_profile('u', locs, [u0, u0, u1, u1])
         self.set_profile('T', locs, [T0, T0, Teq, Teq])
+        self.set_profile('T_Prime', locs, [T0, T0, Teq, Teq])
         self.set_fixed_temperature(0.5 * (T0 + Teq))
         for n in range(self.gas.n_species):
             self.set_profile(self.gas.species_name(n),
@@ -427,6 +437,7 @@ class BurnerFlame(FlameBase):
         ``self.outlet``.
         """
         self.burner = Inlet1D(name='burner', phase=gas)
+
         self.outlet = Outlet1D(name='outlet', phase=gas)
         self.flame = AxisymmetricStagnationFlow(gas, name='flame')
 
@@ -497,7 +508,13 @@ class CounterflowDiffusionFlame(FlameBase):
     def set_initial_guess(self, fuel=None, oxidizer=None, stoich=None):
         """
         Set the initial guess for the solution. The initial guess is generated
+
+
+
+
+
         by assuming infinitely-fast chemistry.
+
         """
         if fuel is not None or oxidizer is not None or stoich is not None:
             warnings.warn(
@@ -509,8 +526,28 @@ class CounterflowDiffusionFlame(FlameBase):
         moles = lambda el: (self.gas.elemental_mass_fraction(el) /
                             self.gas.atomic_weight(el))
 
+
+
+
+
+
+
+
+
+
+
         # Compute stoichiometric mixture composition
+
+
+
+
+
+
+
         Yin_f = self.fuel_inlet.Y
+
+
+
         self.gas.TPY = self.fuel_inlet.T, self.P, Yin_f
         mdotf = self.fuel_inlet.mdot
         u0f = mdotf / self.gas.density
@@ -751,6 +788,7 @@ class ImpingingJet(FlameBase):
         are stored as ``self.inlet``, ``self.flame``, and ``self.surface``.
         """
         self.inlet = Inlet1D(name='inlet', phase=gas)
+
         self.flame = AxisymmetricStagnationFlow(gas, name='flame')
 
         if surface is None:

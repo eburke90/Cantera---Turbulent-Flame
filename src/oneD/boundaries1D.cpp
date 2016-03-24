@@ -5,6 +5,7 @@
 #include "cantera/oneD/Inlet1D.h"
 #include "cantera/oneD/OneDim.h"
 #include "cantera/base/ctml.h"
+#include "cantera/oneD/StFlow.h"
 
 using namespace std;
 
@@ -45,7 +46,7 @@ void Bdry1D::_init(size_t n)
             m_left_nv = m_flow_left->nComponents();
             m_left_points = m_flow_left->nPoints();
             m_left_loc = container().start(m_index-1);
-            m_left_nsp = m_left_nv - 4;
+            m_left_nsp = m_left_nv - c_offset_Y;
             m_phase_left = &m_flow_left->phase();
         } else {
             throw CanteraError("Bdry1D::_init",
@@ -61,7 +62,7 @@ void Bdry1D::_init(size_t n)
             m_flow_right = (StFlow*)&r;
             m_right_nv = m_flow_right->nComponents();
             m_right_loc = container().start(m_index+1);
-            m_right_nsp = m_right_nv - 4;
+            m_right_nsp = m_right_nv - c_offset_Y;
             m_phase_right = &m_flow_right->phase();
         } else {
             throw CanteraError("Bdry1D::_init",
@@ -99,6 +100,8 @@ string Inlet1D::componentName(size_t n) const
         return "mdot";
     case 1:
         return "temperature";
+	case 2:
+		return "T_Prime";
     default:
         break;
     }
@@ -107,10 +110,11 @@ string Inlet1D::componentName(size_t n) const
 
 void Inlet1D::init()
 {
-    _init(2);
+    _init(3);
 
     setBounds(0, -1e5, 1e5); // mdot
     setBounds(1, 200.0, 1e5); // T
+	setBounds(2, 0.0, 1e9); // T'
 
     // set tolerances
     setSteadyTolerances(1e-4, 1e-5);
@@ -130,7 +134,7 @@ void Inlet1D::init()
     }
 
     // components = u, V, T, lambda, + mass fractions
-    m_nsp = m_flow->nComponents() - 4;
+    m_nsp = m_flow->nComponents() - c_offset_Y;
     m_yin.resize(m_nsp, 0.0);
     if (m_xstr != "") {
         setMoleFractions(m_xstr);
@@ -142,6 +146,9 @@ void Inlet1D::init()
 void Inlet1D::eval(size_t jg, doublereal* xg, doublereal* rg,
                    integer* diagg, doublereal rdt)
 {
+	// if evaluating a Jacobian, and the global point is outside
+	// the domain of influence for this domain, then skip
+	// evaluating the residual
     if (jg != npos && (jg + 2 < firstPoint() || jg > lastPoint() + 2)) {
         return;
     }
@@ -158,15 +165,19 @@ void Inlet1D::eval(size_t jg, doublereal* xg, doublereal* rg,
     // Temperature
     r[1] = m_temp - x[1];
 
+	//Temperature Fluctuations
+	r[2] = m_temp_fluc - x[2];
+
+
     // both are algebraic constraints
     diag[0] = 0;
     diag[1] = 0;
-
+    diag[2] = 0;
     // if it is a left inlet, then the flow solution vector
     // starts 2 to the right in the global solution vector
     if (m_ilr == LeftInlet) {
-        xb = x + 2;
-        rb = r + 2;
+        xb = x + 3;
+        rb = r + 3;
 
         // The first flow residual is for u. This, however, is not modified by
         // the inlet, since this is set within the flow domain from the
@@ -179,14 +190,14 @@ void Inlet1D::eval(size_t jg, doublereal* xg, doublereal* rg,
         // The third flow residual is for T, where it is set to T(0).  Subtract
         // the local temperature to hold the flow T to the inlet T.
         rb[2] -= x[1];
-
+        rb[4] -= x[2];
         // The flow domain sets this to -rho*u. Add mdot to specify the mass
         // flow rate.
         rb[3] += x[0];
 
         // add the convective term to the species residual equations
         for (size_t k = 1; k < m_nsp; k++) {
-            rb[4+k] += x[0]*m_yin[k];
+            rb[c_offset_Y+k] += x[0]*m_yin[k];
         }
 
         // if the flow is a freely-propagating flame, mdot is not specified.
@@ -203,9 +214,10 @@ void Inlet1D::eval(size_t jg, doublereal* xg, doublereal* rg,
         rb = r - boffset;
         rb[1] -= m_V0;
         rb[2] -= x[1]; // T
+		rb[4] -= x[2]; // T'
         rb[0] += x[0]; // u
         for (size_t k = 1; k < m_nsp; k++) {
-            rb[4+k] += x[0]*m_yin[k];
+            rb[c_offset_Y+k] += x[0]*m_yin[k];
         }
     }
 }
@@ -242,7 +254,7 @@ void Inlet1D::restore(const XML_Node& dom, doublereal* soln, int loglevel)
             }
         }
     }
-    resize(2,1);
+    resize(3,1);
 }
 
 // ------------- Empty1D -------------
@@ -427,7 +439,7 @@ void Outlet1D::eval(size_t jg, doublereal* xg, doublereal* rg, integer* diagg,
         db = diag + 1;
         rb[0] = xb[3];
         rb[2] = xb[2] - xb[2 + nc];
-        for (k = 4; k < nc; k++) {
+        for (k = c_offset_Y; k < nc; k++) {
             rb[k] = xb[k] - xb[k + nc];
         }
     }
@@ -514,7 +526,7 @@ void OutletRes1D::init()
         throw CanteraError("OutletRes1D::init","no flow!");
     }
 
-    m_nsp = m_flow->nComponents() - 4;
+    m_nsp = m_flow->nComponents() - c_offset_Y;
     m_yres.resize(m_nsp, 0.0);
     if (m_xstr != "") {
         setMoleFractions(m_xstr);
@@ -556,8 +568,8 @@ void OutletRes1D::eval(size_t jg, doublereal* xg, doublereal* rg,
         rb[2] = xb[2] - xb[2 + nc];
 
         // specified mass fractions
-        for (k = 4; k < nc; k++) {
-            rb[k] = xb[k] - m_yres[k-4];
+        for (k = c_offset_Y; k < nc; k++) {
+            rb[k] = xb[k] - m_yres[k-c_offset_Y];
         }
     }
 
@@ -574,7 +586,7 @@ void OutletRes1D::eval(size_t jg, doublereal* xg, doublereal* rg,
         }
         rb[2] = xb[2] - m_temp; // zero dT/dz
         for (k = 5; k < nc; k++) {
-            rb[k] = xb[k] - m_yres[k-4]; // fixed Y
+            rb[k] = xb[k] - m_yres[k-c_offset_Y]; // fixed Y
             db[k] = 0;
         }
     }

@@ -52,6 +52,15 @@ public:
         return m_temp;
     }
 
+	/// Set the temperature fluctuation
+	virtual void setTemperature_fluc(doublereal t) {
+		m_temp_fluc = t;
+	}
+
+	/// Temperature Fluctuation [K].
+	virtual doublereal temperature_fluc() {
+		return m_temp_fluc;
+	}
     virtual size_t nSpecies() {
         return 0;
     }
@@ -98,7 +107,7 @@ protected:
     size_t m_sp_left, m_sp_right;
     size_t m_start_left, m_start_right;
     ThermoPhase* m_phase_left, *m_phase_right;
-    doublereal m_temp, m_mdot;
+	doublereal m_temp, m_mdot, m_temp_fluc;
 };
 
 
@@ -143,6 +152,7 @@ public:
     virtual void _getInitialSoln(doublereal* x) {
         x[0] = m_mdot;
         x[1] = m_temp;
+		x[2] = m_temp_fluc;
     }
 
     virtual size_t nSpecies() {
