@@ -348,6 +348,7 @@ cdef class _FlowBase(Domain1D):
             return self.flow.pressure()
         def __set__(self, P):
             self.flow.setPressure(P)
+
     property TKE:
         """ Turbulent Kinetic Energy """
         def __set__(self, TKE):
@@ -363,6 +364,13 @@ cdef class _FlowBase(Domain1D):
         def __get__(self):
             cdef np.ndarray[np.double_t, ndim=1] data = np.empty(self.n_points)
             self.flow.getviscTurb(&data[0])
+            return data	
+
+    property TT_Out:
+        """The chemical potentials of all species [J/kmol]."""
+        def __get__(self):
+            cdef np.ndarray[np.double_t, ndim=1] data = np.empty(self.n_points)
+            self.flow.getTT_Out(&data[0])
             return data	
 
     def set_transport(self, _SolutionBase phase):
@@ -426,6 +434,7 @@ cdef class _FlowBase(Domain1D):
             self.flow.enableRadiation(<cbool>do_radiation)
 
 
+
 cdef CxxIdealGasPhase* getIdealGasPhase(ThermoPhase phase) except *:
     if phase.thermo.eosType() != thermo_type_ideal_gas:
         raise TypeError('ThermoPhase object is not an IdealGasPhase')
@@ -436,6 +445,7 @@ cdef class FreeFlow(_FlowBase):
     def __cinit__(self, _SolutionBase thermo, *args, **kwargs):
         gas = getIdealGasPhase(thermo)
         self.flow = <CxxStFlow*>(new CxxFreeFlame(gas, thermo.n_species, 2))
+
 
 
 
@@ -831,6 +841,7 @@ cdef class Sim1D:
 
     def clear_stats(self):
         """
+
 
         Clear solver statistics.
         """

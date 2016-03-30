@@ -114,7 +114,7 @@ void Inlet1D::init()
 
     setBounds(0, -1e5, 1e5); // mdot
     setBounds(1, 200.0, 1e5); // T
-	setBounds(2, 0.0, 1e9); // T'
+	setBounds(2, -1e9, 1e9); // T'
 
     // set tolerances
     setSteadyTolerances(1e-4, 1e-5);

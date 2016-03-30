@@ -269,17 +269,18 @@ class FlameBase(Sim1D):
         T = self.T
         u = self.u
         V = self.V
+        Visc = self.flame.ViscTurb
         TPrime = self.profile(self.flame, 'T_Prime')
+        TT_Out = self.flame.TT_Out
 
 
 
         csvfile = open(filename, 'w')
         writer = _csv.writer(csvfile)
-        writer.writerow(['z (m)','Tprime (K)' 'u (m/s)', 'V (1/s)',
-                         'T (K)', 'rho (kg/m3)'] + self.gas.species_names)
+        writer.writerow(['z (m)','Tprime (K)', 'u (m/s)', 'V (1/s)','T (K)', 'rho (kg/m3)', 'Visc Turb', 'TT_Out'] + self.gas.species_names)
         for n in range(self.flame.n_points):
             self.set_gas_state(n)
-            writer.writerow([z[n], TPrime[n], u[n], V[n], T[n], self.gas.density] +
+            writer.writerow([z[n], TPrime[n], u[n], V[n], T[n], self.gas.density, Visc[n],TT_Out[n]] +
                             list(getattr(self.gas, species)))
         csvfile.close()
         if not quiet:
@@ -412,7 +413,7 @@ class FreeFlame(FlameBase):
         locs = [0.0, 0.3, 0.5, 1.0]
         self.set_profile('u', locs, [u0, u0, u1, u1])
         self.set_profile('T', locs, [T0, T0, Teq, Teq])
-        self.set_profile('T_Prime', locs, [T0, T0, Teq, Teq])
+        self.set_profile('T_Prime', locs, [0, 0, Teq*Teq*0.01, Teq*Teq*0.01])
         self.set_fixed_temperature(0.5 * (T0 + Teq))
         for n in range(self.gas.n_species):
             self.set_profile(self.gas.species_name(n),

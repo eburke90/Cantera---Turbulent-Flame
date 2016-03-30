@@ -661,6 +661,7 @@ cdef extern from "cantera/oneD/StFlow.h":
         double TKE()
         void setED(double)
         void getviscTurb(double*) except +
+        void getTT_Out(double*) except +
         double ED()
         void setFixedTempProfile(vector[double]&, vector[double]&)
         void setBoundaryEmissivities(double, double)

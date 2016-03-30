@@ -1,7 +1,5 @@
 
-
 //! @file StFlow.cpp
-
 
 
 // Copyright 2002  California Institute of Technology
@@ -11,12 +9,6 @@
 #include "cantera/transport/TransportBase.h"
 #include "cantera/numerics/funcs.h"
 
-
-
-
-
-
-
 using namespace std;
 
 namespace Cantera
@@ -24,7 +16,6 @@ namespace Cantera
 
 StFlow::StFlow(IdealGasPhase* ph, size_t nsp, size_t points) :
     Domain1D(nsp+c_offset_Y, points),
-
 
     m_press(-1.0),
     m_nsp(nsp),
@@ -78,16 +69,14 @@ StFlow::StFlow(IdealGasPhase* ph, size_t nsp, size_t points) :
     m_ybar.resize(m_nsp);
     m_qdotRadiation.resize(m_points, 0.0);
 
-
-    //-------------- default solution bounds --------------------
+	//-------------- default solution bounds --------------------
 
     setBounds(0, -1e20, 1e20); // no bounds on u
     setBounds(1, -1e20, 1e20); // V
     setBounds(2, 200.0, 1e9); // temperature bounds
     setBounds(3, -1e20, 1e20); // lambda should be negative
 	setBounds(c_offset_TT, -1e20, 1e20);// T'^2 bounds
-
-
+	
     // mass fraction bounds
     for (size_t k = 0; k < m_nsp; k++) {
         setBounds(c_offset_Y+k, -1.0e-5, 1.0e5);
@@ -127,7 +116,7 @@ void StFlow::resize(size_t ncomponents, size_t points)
     m_visc.resize(m_points, 0.0);
     m_tcon.resize(m_points, 0.0);
 	viscTurb.resize(m_points, 0.0);
-
+	TT_Out.resize(m_points, 0.0);
 
     if (m_transport_option == c_Mixav_Transport) {
         m_diff.resize(m_nsp*m_points);
@@ -140,8 +129,6 @@ void StFlow::resize(size_t ncomponents, size_t points)
     m_wdot.resize(m_nsp,m_points, 0.0);
     m_do_energy.resize(m_points,false);
     m_qdotRadiation.resize(m_points, 0.0);
-
-
 
     m_fixedtemp.resize(m_points);
 
@@ -202,18 +189,24 @@ void StFlow::enableSoret(bool withSoret)
 
 void StFlow::setGas(const doublereal* x, size_t j)
 {
-    m_thermo->setTemperature(T(x,j));
-    const doublereal* yy = x + m_nv*j + c_offset_Y;
-    m_thermo->setMassFractions_NoNorm(yy);
-    m_thermo->setPressure(m_press);
-
-	viscTurb[j] = m_rho[j] * 0.09* (m_TKE*m_TKE/m_ED);
-
-}
+	m_thermo->setTemperature(T(x, j));
+	const doublereal* yy = x + m_nv*j + c_offset_Y;
+	m_thermo->setMassFractions_NoNorm(yy);
+	m_thermo->setPressure(m_press);
+	viscTurb[j] = m_rho[j] * 0.09* (m_TKE*m_TKE / m_ED);
+		
+	TT_Out[j] = -2.86 * viscTurb[j] * dTdz(x, j) * dTdz(x, j);
+	}
 
 void StFlow::getviscTurb(doublereal* viscTurb){
 	for (size_t k = 0; k < m_points; k++) {
 		viscTurb[k] = setviscTurb(k);
+	}
+}
+
+void StFlow::getTT_Out(doublereal* TT_Out){
+	for (size_t k = 0; k < m_points; k++) {
+		TT_Out[k] = setTT_Out(k);
 	}
 }
 
@@ -227,12 +220,10 @@ void StFlow::setGasAtMidpoint(const doublereal* x, size_t j)
     }
     m_thermo->setMassFractions_NoNorm(m_ybar.data());
     m_thermo->setPressure(m_press);
-
-}
+	}
 
 void StFlow::_finalize(const doublereal* x)
 {
-
 
     size_t j;
     doublereal zz, tt;
@@ -246,13 +237,7 @@ void StFlow::_finalize(const doublereal* x)
             tt = linearInterp(zz, m_zfix, m_tfix);
             m_fixedtemp[j] = tt;
         }
-
-
-
-
-
-
-    }
+		    }
     if (e) {
         solveEnergyEqn();
     }
@@ -263,9 +248,7 @@ void StFlow::eval(size_t jg, doublereal* xg,
 {
     // if evaluating a Jacobian, and the global point is outside the domain of
 
-
     // influence for this domain, then skip evaluating the residual
-
 
     if (jg != npos && (jg + 1 < firstPoint() || jg > lastPoint() + 1)) {
         return;
@@ -295,25 +278,17 @@ void StFlow::eval(size_t jg, doublereal* xg,
     // properties are computed for grid points from j0 to j1
     size_t j0 = std::max<size_t>(jmin, 1) - 1;
     size_t j1 = std::min(jmax+1,m_points-1);
-
     size_t j, k;
-
-
-
+	
     // ------------ update properties ------------
-
-
-
     updateThermo(x, j0, j1);
     // update transport properties only if a Jacobian is not being evaluated
     if (jg == npos) {
         updateTransport(x, j0, j1);
     }
-
     // update the species diffusive mass fluxes whether or not a
     // Jacobian is being evaluated
     updateDiffFluxes(x, j0, j1);
-
 
     //----------------------------------------------------
     // evaluate the residual equations at all required
@@ -409,11 +384,6 @@ void StFlow::eval(size_t jg, doublereal* xg,
             // a result, these residual equations will force the solution
             // variables to the values for the boundary object
 
-
-
-
-
-
             rsd[index(c_offset_V,0)] = V(x,0);
             rsd[index(c_offset_T,0)] = T(x,0);
             rsd[index(c_offset_L,0)] = -rho_u(x,0);
@@ -423,9 +393,6 @@ void StFlow::eval(size_t jg, doublereal* xg,
 
             // the boundary object may modify this.
 
-
-
-
             sum = 0.0;
             for (k = 0; k < m_nsp; k++) {
                 sum += Y(x,k,0);
@@ -433,7 +400,6 @@ void StFlow::eval(size_t jg, doublereal* xg,
                     -(m_flux(k,0) + rho_u(x,0)* Y(x,k,0));
             }
             rsd[index(c_offset_Y, 0)] = 1.0 - sum;
-
 
 
         } else if (j == m_points - 1) {
@@ -448,7 +414,6 @@ void StFlow::eval(size_t jg, doublereal* xg,
             //    \rho dV/dt + \rho u dV/dz + \rho V^2
             //       = d(\mu dV/dz)/dz - lambda
 
-
             //-------------------------------------------------
             rsd[index(c_offset_V,j)]
             = (shear(x,j) - lambda(x,j) - rho_u(x,j)*dVdz(x,j)
@@ -461,7 +426,6 @@ void StFlow::eval(size_t jg, doublereal* xg,
             //
             //   \rho dY_k/dt + \rho u dY_k/dz + dJ_k/dz
             //   = M_k\omega_k
-
 
             //-------------------------------------------------
             getWdot(x,j);
@@ -476,7 +440,6 @@ void StFlow::eval(size_t jg, doublereal* xg,
 			if (EDC<0.1){
 				EDC=0.1;
 			}
-
             doublereal convec, diffus;
             for (k = 0; k < m_nsp; k++) {
                 convec = rho_u(x,j)*dYdz(x,k,j);
@@ -540,49 +503,37 @@ void StFlow::eval(size_t jg, doublereal* xg,
 			// Temperature Fluctuation
 			//-----------------------------------------------
 
-/*            setGas(x,j);
 			doublereal convec_TT, dttdzj, TT_sink, TT_src;
-
-			size_t jloc = (u(x,j) > 0.0 ? j : j + 1);
-			dttdzj = (TT(x,j)-TT(x,j-1))/(m_z[j] - m_z[j-1]);
-
 			convec_TT = 0.0; TT_sink = 0.0; TT_src = 0.0;
+			size_t jloc = (u(x,j) > 0.0 ? j : j + 1);
 
-			convec_TT = -(m_rho[j] * dudz(x, j)) + (u(x, j)*((m_rho[j] - m_rho[j - 1]) / (m_z[j] - m_z[j - 1])));
-			TT_sink = 2.86*viscTurb[jloc] * dTdz(x, j) * dTdz(x, j);
-			TT_src = -2 * m_rho[j] * (m_ED / m_TKE);
+			if (jloc == 0){
+				dttdzj = ((TT(x, jloc + 1) - TT(x, jloc)) / (m_z[jloc + 1] - m_z[jloc]));
+				doublereal dt = (T(x, j + 1) - T(x, j)) / (m_z[j + 1] - m_z[j]);
+				TT_sink = -2.86 * viscTurb[j + 1] * dt * dt;
+				convec_TT = (dttdzj*rho_u(x, jloc));//
+			}
+			else if (jloc == m_points - 1){
+				dttdzj = ((TT(x, jloc - 1) - TT(x, jloc - 2)) / (m_z[jloc - 1] - m_z[jloc - 2]));
+				doublereal dt = (T(x, j - 1) - T(x, j - 2)) / (m_z[j-1] - m_z[j - 2]);
+				TT_sink = -2.86 * viscTurb[j - 1] * dt * dt;
+				convec_TT = (dttdzj*rho_u(x, jloc));//
+			}
+		    else{
+				dttdzj = (TT(x, jloc) - TT(x, jloc - 1)) / (m_z[jloc] - m_z[jloc - 1]);
+				doublereal dt = (T(x, j) - T(x, j - 1)) / (m_z[j] - m_z[j - 1]);
+				TT_sink = -2.86 * viscTurb[j] * dt * dt;
+				convec_TT = (dttdzj*rho_u(x, jloc));//
+			}
+					
+			//convec_TT = (dttdzj*rho_u(x, j));// +(TT(x, j) * ((m_rho[j] * dudz(x, j)) + (u(x, j) * drhodz(x, j))));
+			//TT_sink = -2.86 * viscTurb[j] * dTdz(x, j) * dTdz(x, j);
+			TT_src = 2 * m_rho[j] * (m_ED / m_TKE) * TT(x,j);
 
-			rsd[index(c_offset_TT, j)] =  divFlux_TT(x, j) + convec_TT + TT_sink + TT_src;
-			rsd[index(c_offset_TT, j)] /= m_rho[j];
+			rsd[index(c_offset_TT, j)] = - divFlux_TT(x, j) - convec_TT - TT_sink - TT_src;// 
+			rsd[index(c_offset_TT, j)] /=  m_rho[j];
 			rsd[index(c_offset_TT, j)] -= rdt*(TT(x, j) - TT_prev(j));
-			diag[index(c_offset_TT, j)] = 1; */
-            
-			    setGas(x,j);
-
-                // heat release term
-                const vector_fp& h_RT = m_thermo->enthalpy_RT_ref();
-                const vector_fp& cp_R = m_thermo->cp_R_ref();
-
-                sum = 0.0;
-                sum2 = 0.0;
-                doublereal flxk_TT, dttdzj;
-                for (k = 0; k < m_nsp; k++) {
-                    flxk_TT = 0.5*(m_flux(k,j-1) + m_flux(k,j));
-                    sum += (wdot(k,j)*h_RT[k]);
-                    sum2 += flxk_TT*cp_R[k]/m_wt[k];
-                }
-                sum *= GasConstant * TT(x,j);
-                size_t jloc = (u(x,j) > 0.0 ? j : j + 1);
-                dttdzj = (TT(x,j)-TT(x,j-1))/(m_z[j] - m_z[j-1]);
-                sum2 *= GasConstant * dttdzj;
-
-				rsd[index(c_offset_TT, j)] = -m_cp[j]*rho_u(x,j)*dttdzj
-					- divFlux_TT(x, j) - (sum)-sum2;
-                rsd[index(c_offset_TT, j)] /= (m_rho[j]*m_cp[j]);
-
-                rsd[index(c_offset_TT, j)] -= rdt*(TT(x,j) - TT_prev(j));
-                rsd[index(c_offset_TT, j)] -= (m_qdotRadiation[j] / (m_rho[j] * m_cp[j]));
-                diag[index(c_offset_TT, j)] = 1;
+			diag[index(c_offset_TT, j)] = 1; 
         }
     }
 }
@@ -623,34 +574,26 @@ void StFlow::showSolution(const doublereal* x)
     size_t i, j, n;
 
 
-
     // The mean molecular weight is needed to convert
     updateThermo(x, 0, m_points-1);
 
     writelog("    Pressure:  {:10.4g} Pa\n", m_press);
-
-
 
     for (i = 0; i < nn; i++) {
         writeline('-', 79, false, true);
         writelog("\n          z ");
 
 
-
-
         for (n = 0; n < 5; n++) {
             writelog(" {:>10s} ", componentName(i*5 + n));
-
 
         }
         writeline('-', 79, false, true);
         for (j = 0; j < m_points; j++) {
             writelog("\n {:10.4g} ", m_z[j]);
 
-
             for (n = 0; n < 5; n++) {
                 writelog(" {:10.4g} ", component(x, i*5+n,j));
-
 
             }
         }
@@ -661,21 +604,16 @@ void StFlow::showSolution(const doublereal* x)
     writelog("\n          z ");
 
 
-
-
     for (n = 0; n < nrem; n++) {
         writelog(" {:>10s} ", componentName(nn*5 + n));
-
 
     }
     writeline('-', 79, false, true);
     for (j = 0; j < m_points; j++) {
         writelog("\n {:10.4g} ", m_z[j]);
 
-
         for (n = 0; n < nrem; n++) {
             writelog(" {:10.4g} ", component(x, nn*5+n,j));
-
 
         }
     }
@@ -684,11 +622,9 @@ void StFlow::showSolution(const doublereal* x)
         writeline('-', 79, false, true);
         writelog("\n          z      radiative heat loss");
 
-
         writeline('-', 79, false, true);
         for (j = 0; j < m_points; j++) {
             writelog("\n {:10.4g}        {:10.4g}", m_z[j], m_qdotRadiation[j]);
-
 
         }
         writelog("\n");
@@ -734,9 +670,8 @@ void StFlow::updateDiffFluxes(const doublereal* x, size_t j0, size_t j1)
                 }
 
                 //m_flux(k,j) = sum * ((m_diff[k+j*m_nsp])+((0.09*m_TKE*m_TKE)/(0.7*m_ED))) / dz;
-				m_flux(k, j) = sum * m_diff[k + j*m_nsp] / dz;            }
-
-
+				m_flux(k, j) = sum * m_diff[k + j*m_nsp] / dz;           
+			}
         }
         break;
 
@@ -882,9 +817,6 @@ void StFlow::restore(const XML_Node& dom, doublereal* soln, int loglevel)
 
 
 
-
-
-
             // setFixedTempProfile *after* restoring the solution.
 
             vector_fp zz(np);
@@ -947,8 +879,6 @@ void StFlow::restore(const XML_Node& dom, doublereal* soln, int loglevel)
                                "but should be length {}", x.size(), nPoints());
 
 
-
-
         }
     }
 
@@ -965,8 +895,6 @@ void StFlow::restore(const XML_Node& dom, doublereal* soln, int loglevel)
                 writelog("\nWarning: StFlow::restore: species_enabled is "
                     "length {} but should be length {}. Enabling all species "
                     "equations by default.", x.size(), m_nsp);
-
-
 
 
             }
@@ -1005,8 +933,6 @@ XML_Node& StFlow::save(XML_Node& o, const doublereal* const sol)
     addFloatArray(gv,"u",x.size(),x.data(),"m/s","velocity");
 
     soln.getRow(1, x.data());
-
-
 
     addFloatArray(gv,"V",x.size(),x.data(),"1/s","rate");
 
@@ -1089,7 +1015,6 @@ void AxiStagnFlow::evalContinuity(size_t j, doublereal* x, doublereal* rsd,
     //
     //    d(\rho u)/dz + 2\rho V = 0
 
-
     //------------------------------------------------
 
     rsd[index(c_offset_U,j)] =
@@ -1142,14 +1067,12 @@ void FreeFlame::evalContinuity(size_t j, doublereal* x, doublereal* rsd,
     //
     //    d(\rho u)/dz + 2\rho V = 0
 
-
     //----------------------------------------------
 
     if (grid(j) > m_zfixed) {
         rsd[index(c_offset_U,j)] =
             - (rho_u(x,j) - rho_u(x,j-1))/m_dz[j-1]
             - (density(j-1)*V(x,j-1) + density(j)*V(x,j));
-
 
 
     } else if (grid(j) == m_zfixed) {

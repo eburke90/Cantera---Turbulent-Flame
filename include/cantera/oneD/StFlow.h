@@ -1,6 +1,8 @@
+
 //! @file StFlow.h
 
 // Copyright 2001  California Institute of Technology
+
 
 #ifndef CT_STFLOW_H
 #define CT_STFLOW_H
@@ -40,104 +42,112 @@ class Transport;
 class StFlow : public Domain1D
 {
 public:
-    //--------------------------------
-    // construction and destruction
-    //--------------------------------
+	//--------------------------------
+	// construction and destruction
+	//--------------------------------
 
-    //! Create a new flow domain.
-    //! @param ph Object representing the gas phase. This object will be used
-    //!     to evaluate all thermodynamic, kinetic, and transport properties.
-    //! @param nsp Number of species.
-    //! @param points Initial number of grid points
-    StFlow(IdealGasPhase* ph = 0, size_t nsp = 1, size_t points = 1);
+	//! Create a new flow domain.
+	//! @param ph Object representing the gas phase. This object will be used
+	//!     to evaluate all thermodynamic, kinetic, and transport properties.
+	//! @param nsp Number of species.
+	//! @param points Initial number of grid points
+	StFlow(IdealGasPhase* ph = 0, size_t nsp = 1, size_t points = 1);
 
-    //! @name Problem Specification
-    //! @{
+	//! @name Problem Specification
+	//! @{
 
-    virtual void setupGrid(size_t n, const doublereal* z);
+	virtual void setupGrid(size_t n, const doublereal* z);
 
-    thermo_t& phase() {
-        return *m_thermo;
-    }
-    Kinetics& kinetics() {
-        return *m_kin;
-    }
+	thermo_t& phase() {
+		return *m_thermo;
+	}
+	Kinetics& kinetics() {
+		return *m_kin;
+	}
 
-    virtual void init() {
-    }
+	virtual void init() {
+	}
 
-    /**
-     * Set the thermo manager. Note that the flow equations assume
-     * the ideal gas equation.
-     */
-    void setThermo(IdealGasPhase& th) {
-        m_thermo = &th;
-    }
+	/**
+	 * Set the thermo manager. Note that the flow equations assume
+	 * the ideal gas equation.
+	 */
+	void setThermo(IdealGasPhase& th) {
+		m_thermo = &th;
+	}
 
-    //! Set the kinetics manager. The kinetics manager must
-    void setKinetics(Kinetics& kin) {
-        m_kin = &kin;
-    }
+	//! Set the kinetics manager. The kinetics manager must
+	void setKinetics(Kinetics& kin) {
+		m_kin = &kin;
+	}
 
-    //! set the transport manager
-    void setTransport(Transport& trans, bool withSoret = false);
-    void enableSoret(bool withSoret);
-    bool withSoret() const {
-        return m_do_soret;
-    }
+	//! set the transport manager
+	void setTransport(Transport& trans, bool withSoret = false);
+	void enableSoret(bool withSoret);
+	bool withSoret() const {
+		return m_do_soret;
+	}
 
-    //! Set the pressure. Since the flow equations are for the limit of small
-    //! Mach number, the pressure is very nearly constant throughout the flow.
-    void setPressure(doublereal p) {
-        m_press = p;
-    }
+	//! Set the pressure. Since the flow equations are for the limit of small
+	//! Mach number, the pressure is very nearly constant throughout the flow.
 
-    //! The current pressure [Pa].
-    doublereal pressure() const {
-        return m_press;
-    }
-	
-	 //! The current T' 
-    doublereal Tprime() const {
-        return Tprime();
-    }
-	
+	void setPressure(doublereal p) {
+		m_press = p;
+	}
+
+	//! The current pressure [Pa].
+	doublereal pressure() const {
+		return m_press;
+	}
+
+	//! The current T' 
+	doublereal Tprime() const {
+		return Tprime();
+	}
+
 	//! Set the Turbulent Kinetic Energy
-    void setTKE(doublereal TKE) {
-        m_TKE = TKE;
-    }
+	void setTKE(doublereal TKE) {
+		m_TKE = TKE;
+	}
 
-    //! The current Turbulent Kinetic Energy
-    doublereal TKE() const {
-        return m_TKE;
-    }
+	//! The current Turbulent Kinetic Energy
+	doublereal TKE() const {
+		return m_TKE;
+	}
 
 	//! Set the turbulent dissipation 
-    void setED(doublereal ED) {
-        m_ED = ED;
-    }
-	
+	void setED(doublereal ED) {
+		m_ED = ED;
+	}
+
 	// Getter for Turbulent Viscosity
 	void getviscTurb(doublereal* viscTurb);
-    doublereal setviscTurb(size_t j) const {
-        return viscTurb[j];
-    }
+	doublereal setviscTurb(size_t j) const {
+		return viscTurb[j];
+	}
+
+	// Getter for Turbulent Viscosity
+	void getTT_Out(doublereal* TT_Out);
+	doublereal setTT_Out(size_t j) const {
+		return TT_Out[j];
+	}
+	   
 	//! The current turbulent dissipation
     doublereal ED() const {
         return m_ED;
     }
+
     //! Write the initial solution estimate into array x.
     virtual void _getInitialSoln(doublereal* x) {
         for (size_t j = 0; j < m_points; j++) {
             T(x,j) = m_thermo->temperature();
-            TT(x, j) = m_thermo->temperature();
+			TT(x, j) = m_thermo->temperature();
             m_thermo->getMassFractions(&Y(x, 0, j));
         }
     }
 
     virtual void _finalize(const doublereal* x);
-
-    //! Sometimes it is desired to carry out the simulation using a specified
+	//! Sometimes it is desired to carry out the simulation using a specified
     //! temperature profile, rather than computing it by solving the energy
     //! equation. This method specifies this profile.
     void setFixedTempProfile(vector_fp& zfixed, vector_fp& tfixed) {
@@ -153,7 +163,7 @@ public:
         m_fixedtemp[j] = t;
         m_do_energy[j] = false;
     }
-
+	
     //! The fixed temperature value at point j.
     doublereal T_fixed(size_t j) const {
         return m_fixedtemp[j];
@@ -195,6 +205,7 @@ public:
                 m_do_energy[i] = true;
             }
         } else {
+
             if (!m_do_energy[j]) {
                 changed = true;
             }
@@ -203,6 +214,7 @@ public:
         m_refiner->setActive(0, true);
         m_refiner->setActive(1, true);
         m_refiner->setActive(2, true);
+		m_refiner->setActive(4, true);
         if (changed) {
             needJacUpdate();
         }
@@ -230,6 +242,8 @@ public:
      * radiative term and writes them into the variables, which are used for the
      * calculation.
      */
+
+
     void setBoundaryEmissivities(doublereal e_left, doublereal e_right) {
         if (e_left < 0 || e_left > 1) {
             throw CanteraError("setBoundaryEmissivities",
@@ -243,6 +257,7 @@ public:
         }
     }
 
+
     void fixTemperature(size_t j=npos) {
         bool changed = false;
         if (j == npos) {
@@ -253,6 +268,8 @@ public:
                 m_do_energy[i] = false;
             }
         } else {
+
+
             if (m_do_energy[j]) {
                 changed = true;
             }
@@ -270,7 +287,7 @@ public:
         return m_do_energy[j];
     }
 
-    void integrateChem(doublereal* x,doublereal dt);
+	void integrateChem(doublereal* x,doublereal dt);
 
     //! Change the grid size. Called after grid refinement.
     void resize(size_t components, size_t points);
@@ -363,6 +380,7 @@ protected:
         return (c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
     }
 
+
   //! @name Solution components
     //! @{
 
@@ -388,7 +406,7 @@ protected:
         return prevSoln(c_offset_TT, j);
     }
 	
-    doublereal rho_u(const doublereal* x, size_t j) const {
+	doublereal rho_u(const doublereal* x, size_t j) const {
         return m_rho[j]*x[index(c_offset_U, j)];
     }
 
@@ -449,6 +467,12 @@ protected:
 		size_t jloc = (u(x, j) > 0.0 ? j : j + 1);
 		return (u(x, jloc) - u(x, jloc - 1)) / (m_z[j] - m_z[j - 1]);
 	}
+
+	doublereal drhodz(const doublereal* x, size_t j) const {
+		size_t jloc = (u(x, j) > 0.0 ? j : j + 1);
+		return (m_rho[jloc] - m_rho[jloc-1]) / (m_z[j] - m_z[j - 1]);
+	}
+
     //! @}
 
     doublereal shear(const doublereal* x, size_t j) const {
@@ -457,7 +481,7 @@ protected:
         return 2.0*(c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
     }
 
-        doublereal divHeatFlux(const doublereal* x, size_t j) const {
+	doublereal divHeatFlux(const doublereal* x, size_t j) const {
 		//doublereal c1 = ((m_tcon[j-1])+(((m_cp[j-1]*m_rho[j-1]*m_TKE*m_TKE*0.09)/(0.85*m_ED))))*(T(x,j) - T(x,j-1));
 		//doublereal c2 = ((m_tcon[j])+(((m_cp[j]*m_rho[j]*m_TKE*m_TKE*0.09)/(0.85*m_ED))))*(T(x,j+1) - T(x,j));
 		doublereal c1 = ((m_tcon[j-1]))*(T(x,j) - T(x,j-1));
@@ -465,23 +489,46 @@ protected:
 		return -2.0*(c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
     }
 
-    doublereal divFlux_TT(const doublereal* x, size_t j) const {
+	doublereal divFlux_TT(const doublereal* x, size_t j) const {
 		
-		doublereal c1 = ((m_tcon[j-1]))*(TT(x,j) - TT(x,j-1));
-		doublereal c2 = ((m_tcon[j]))*(TT(x,j+1) - TT(x,j));      
-		return -2.0*(c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
- /*       size_t jloc = (u(x,j) > 0.0 ? j : j + 1);
+        size_t jloc = (u(x,j) > 0.0 ? j : j + 1);
 		doublereal sigma_t = 0.85, dTTdx;
 		doublereal div_TT_diff, h, alpha, d2TTdx2;
-		h = z(j) - z(j - 1);
-		alpha = (z(j + 1) - z(j)) / h;
 
-		div_TT_diff = (1 / sigma_t)*((viscTurb[jloc] - viscTurb[jloc - 1]) / (z(j) - z(j - 1)));
-		dTTdx = (TT(x, jloc) - TT(x, jloc-1)) / (z(j) - z(j-1));
-		d2TTdx2 = (-(TT(x, jloc) - TT(x, jloc + 1))*h + (TT(x, jloc - 1) - TT(x, jloc))*alpha*h) / (h*h*h * alpha);
+		if (jloc == 0){
 
-		return div_TT_diff*dTTdx + (viscTurb[jloc]/sigma_t) * d2TTdx2; */
+			h = z(jloc+1) - z(jloc);
+			alpha = (z(jloc + 2) - z(jloc+1)) / h;
+
+			div_TT_diff = ((1 / sigma_t)*((viscTurb[jloc+1] - viscTurb[jloc]) / (z(jloc+1) - z(jloc)))) + ((m_visc[jloc+1] - m_visc[jloc]) / (z(jloc+1) - z(jloc)));
+			dTTdx = (TT(x, jloc+1) - TT(x, jloc)) / (z(jloc+1) - z(jloc ));
+			d2TTdx2 = ((TT(x, jloc + 2) - TT(x, jloc+1))*h - (TT(x, jloc+1) - TT(x, jloc ))*alpha*h) / (h*h*h * alpha);
+			return  0;// -((div_TT_diff*dTTdx) + ((m_visc[j + 1] + (viscTurb[jloc + 1] / sigma_t)) * d2TTdx2));
+
 		}
+		else if (jloc == m_points - 1){
+
+			h = z(jloc-1) - z(jloc - 2);
+			alpha = (z(jloc) - z(jloc-1)) / h;
+
+			div_TT_diff = ((1 / sigma_t)*((viscTurb[jloc-1] - viscTurb[jloc - 2]) / (z(jloc-1) - z(jloc - 2)))) + ((m_visc[jloc-1] - m_visc[jloc - 2]) / (z(jloc-1) - z(jloc - 2)));
+			dTTdx = (TT(x, jloc-1) - TT(x, jloc - 2)) / (z(jloc-1) - z(jloc - 2));
+			d2TTdx2 = ((TT(x, jloc ) - TT(x, jloc-1))*h - (TT(x, jloc-1) - TT(x, jloc - 2))*alpha*h) / (h*h*h * alpha);
+			return -((div_TT_diff*dTTdx) + ((m_visc[j-1] + (viscTurb[jloc-1] / sigma_t)) * d2TTdx2));
+		}
+		else{
+		
+			h = z(jloc) - z(jloc - 1);
+			alpha = (z(jloc + 1) - z(jloc)) / h;
+
+			div_TT_diff = ((1 / sigma_t)*((viscTurb[jloc] - viscTurb[jloc - 1]) / h)) + ((m_visc[jloc] - m_visc[jloc - 1]) / h);
+			dTTdx = (TT(x, jloc) - TT(x, jloc-1)) / h;
+			d2TTdx2 = ((TT(x, jloc + 1)-TT(x, jloc) )*h - (TT(x, jloc)-TT(x, jloc - 1))*alpha*h) / (h*h*h * alpha);
+			return -((div_TT_diff*dTTdx) + ((m_visc[j] + (viscTurb[jloc] / sigma_t)) * d2TTdx2));
+		}
+
+		}
+
     size_t mindex(size_t k, size_t j, size_t m) {
         return m*m_nsp*m_nsp + m_nsp*j + k;
     }
@@ -511,7 +558,8 @@ protected:
 	//Turbulent Kinetic Energy
 	doublereal m_TKE;
 	vector_fp viscTurb;
-	
+	vector_fp TT_Out;
+
     // transport properties
     vector_fp m_visc;
     vector_fp m_tcon;
@@ -539,6 +587,7 @@ protected:
     //! for CO2, second is for H2O.
     std::vector<size_t> m_kRadiating;
 
+
     // flags
     std::vector<bool> m_do_energy;
     bool m_do_soret;
@@ -549,9 +598,12 @@ protected:
     bool m_do_radiation;
 
     //! radiative heat loss vector
+
     vector_fp m_qdotRadiation;
 
+
     // fixed T and Y values
+
     vector_fp m_fixedtemp;
     vector_fp m_zfix;
     vector_fp m_tfix;
