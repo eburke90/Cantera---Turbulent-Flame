@@ -8,6 +8,9 @@
 #include "cantera/base/ctml.h"
 #include "cantera/transport/TransportBase.h"
 #include "cantera/numerics/funcs.h"
+#include "cantera/kinetics/TurbulentKinetics.h"
+#include "cantera/kinetics/RxnRates.h"
+
 
 using namespace std;
 
@@ -194,9 +197,17 @@ void StFlow::setGas(const doublereal* x, size_t j)
 	m_thermo->setMassFractions_NoNorm(yy);
 	m_thermo->setPressure(m_press);
 	viscTurb[j] = m_rho[j] * 0.09* (m_TKE*m_TKE / m_ED);
-		
-	TT_Out[j] = -2.86 * viscTurb[j] * dTdz(x, j) * dTdz(x, j);
+	doublereal TempPrime = sqrt(TT(x, j));
+	doublereal TprimeOverT = TempPrime / T(x, j);
+	doublereal T_inverse = 1 / T(x, j);
+
+
+	TurbulentKinetics* turbKin = dynamic_cast<TurbulentKinetics*>(m_kin);
+	if (turbKin) {
+		turbKin->setTprime(TempPrime);
+		TT_Out[j] = m_arrh->Cc_Out(T_inverse, TprimeOverT);
 	}
+}
 
 void StFlow::getviscTurb(doublereal* viscTurb){
 	for (size_t k = 0; k < m_points; k++) {
@@ -647,8 +658,8 @@ void StFlow::updateDiffFluxes(const doublereal* x, size_t j0, size_t j1)
 
             for (k = 0; k < m_nsp; k++) {
 
-                //m_flux(k,j) =  m_wt[k]*(rho*((m_diff[k+m_nsp*j])+((0.09*m_TKE*m_TKE)/(0.7*m_ED)))/wtm);
-                m_flux(k,j) = m_wt[k]*(rho*m_diff[k+m_nsp*j]/wtm);
+                m_flux(k,j) =  m_wt[k]*(rho*((m_diff[k+m_nsp*j])+((0.09*m_TKE*m_TKE)/(0.7*m_ED)))/wtm);
+                //m_flux(k,j) = m_wt[k]*(rho*m_diff[k+m_nsp*j]/wtm);
                 m_flux(k,j) *= (X(x,k,j) - X(x,k,j+1))/dz;
                 sum -= m_flux(k,j);
             }
@@ -669,8 +680,8 @@ void StFlow::updateDiffFluxes(const doublereal* x, size_t j0, size_t j1)
                     sum += m_wt[m] * m_multidiff[mindex(k,m,j)] * (X(x,m,j+1)-X(x,m,j));
                 }
 
-                //m_flux(k,j) = sum * ((m_diff[k+j*m_nsp])+((0.09*m_TKE*m_TKE)/(0.7*m_ED))) / dz;
-				m_flux(k, j) = sum * m_diff[k + j*m_nsp] / dz;           
+                m_flux(k,j) = sum * ((m_diff[k+j*m_nsp])+((0.09*m_TKE*m_TKE)/(0.7*m_ED))) / dz;
+				//m_flux(k, j) = sum * m_diff[k + j*m_nsp] / dz;           
 			}
         }
         break;

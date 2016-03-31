@@ -1,0 +1,1120 @@
+﻿Build started 30/03/2016 17:48:53.
+     1>Project "C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\src\Turbulent Flame.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt base\application.cpp base\checkFinite.cpp base\clockWC.cpp base\ct2ctml.cpp base\ctexceptions.cpp base\ctml.cpp base\global.cpp base\plots.cpp base\stringUtils.cpp base\ValueCache.cpp base\xml.cpp clib\ct.cpp clib\ctfunc.cpp clib\ctmultiphase.cpp clib\ctonedim.cpp clib\ctreactor.cpp clib\ctrpath.cpp clib\ctsurf.cpp clib\ctxml.cpp equil\BasisOptimize.cpp equil\ChemEquil.cpp equil\MultiPhase.cpp equil\MultiPhaseEquil.cpp equil\vcs_elem.cpp equil\vcs_elem_rearrange.cpp equil\vcs_Gibbs.cpp equil\vcs_inest.cpp equil\vcs_MultiPhaseEquil.cpp equil\vcs_nondim.cpp equil\vcs_phaseStability.cpp equil\vcs_prep.cpp equil\vcs_prob.cpp equil\vcs_rearrange.cpp equil\vcs_report.cpp equil\vcs_rxnadj.cpp equil\vcs_setMolesLinProg.cpp equil\vcs_solve.cpp equil\vcs_solve_phaseStability.cpp equil\vcs_solve_TP.cpp equil\vcs_SpeciesProperties.cpp equil\vcs_species_thermo.cpp equil\vcs_TP.cpp equil\vcs_util.cpp equil\vcs_VolPhase.cpp fortran\fct.cpp fortran\fctxml.cpp kinetics\AqueousKinetics.cpp kinetics\BulkKinetics.cpp kinetics\Falloff.cpp kinetics\FalloffFactory.cpp kinetics\GasKinetics.cpp kinetics\Group.cpp kinetics\ImplicitSurfChem.cpp kinetics\importKinetics.cpp kinetics\InterfaceKinetics.cpp kinetics\Kinetics.cpp kinetics\KineticsFactory.cpp kinetics\Reaction.cpp kinetics\ReactionPath.cpp kinetics\RxnRates.cpp kinetics\solveSP.cpp matlab\ctfunctions.cpp matlab\ctmethods.cpp matlab\flowdevicemethods.cpp matlab\funcmethods.cpp matlab\kineticsmethods.cpp matlab\mixturemethods.cpp matlab\onedimmethods.cpp matlab\phasemethods.cpp matlab\reactormethods.cpp matlab\reactornetmethods.cpp matlab\surfmethods.cpp matlab\thermomethods.cpp matlab\transportmethods.cpp matlab\wallmethods.cpp matlab\xmlmethods.cpp numerics\BandMatrix.cpp numerics\CVodesIntegrator.cpp numerics\DAE_solvers.cpp numerics\DenseMatrix.cpp numerics\Func1.cpp numerics\funcs.cpp numerics\GeneralMatrix.cpp numerics\IDA_Solver.cpp numerics\ODE_integrators.cpp numerics\polyfit.cpp numerics\ResidJacEval.cpp numerics\RootFind.cpp numerics\SquareMatrix.cpp oned\boundaries1D.cpp oned\Domain1D.cpp oned\MultiJac.cpp oned\MultiNewton.cpp oned\OneDim.cpp oned\refine.cpp oned\Sim1D.cpp oned\StFlow.cpp thermo\ConstCpPoly.cpp thermo\ConstDensityThermo.cpp thermo\DebyeHuckel.cpp thermo\Elements.cpp thermo\FixedChemPotSSTP.cpp thermo\GeneralSpeciesThermo.cpp thermo\GibbsExcessVPSSTP.cpp thermo\HMWSoln.cpp thermo\HMWSoln_input.cpp thermo\IdealGasPhase.cpp thermo\IdealMolalSoln.cpp thermo\IdealSolidSolnPhase.cpp thermo\IdealSolnGasVPSS.cpp thermo\IonsFromNeutralVPSSTP.cpp thermo\LatticePhase.cpp thermo\LatticeSolidPhase.cpp thermo\MargulesVPSSTP.cpp thermo\MaskellSolidSolnPhase.cpp thermo\MetalSHEelectrons.cpp thermo\MineralEQ3.cpp thermo\MixedSolventElectrolyte.cpp thermo\MixtureFugacityTP.cpp thermo\MolalityVPSSTP.cpp thermo\MolarityIonicVPSSTP.cpp thermo\Mu0Poly.cpp thermo\Nasa9Poly1.cpp thermo\Nasa9PolyMultiTempRegion.cpp thermo\NasaPoly2.cpp thermo\PDSS.cpp thermo\PDSS_ConstVol.cpp thermo\PDSS_HKFT.cpp thermo\PDSS_IdealGas.cpp thermo\PDSS_IonsFromNeutral.cpp thermo\PDSS_SSVol.cpp thermo\PDSS_Water.cpp thermo\Phase.cpp thermo\PhaseCombo_Interaction.cpp thermo\PureFluidPhase.cpp thermo\RedlichKisterVPSSTP.cpp thermo\RedlichKwongMFTP.cpp thermo\SemiconductorPhase.cpp thermo\SingleSpeciesTP.cpp thermo\Species.cpp thermo\SpeciesThermo.cpp thermo\SpeciesThermoFactory.cpp thermo\SpeciesThermoInterpType.cpp thermo\StoichSubstance.cpp thermo\SurfPhase.cpp thermo\ThermoFactory.cpp thermo\ThermoPhase.cpp thermo\VPSSMgr.cpp thermo\VPSSMgrFactory.cpp thermo\VPSSMgr_ConstVol.cpp thermo\VPSSMgr_General.cpp thermo\VPSSMgr_IdealGas.cpp thermo\VPSSMgr_Water_ConstVol.cpp thermo\VPSSMgr_Water_HKFT.cpp thermo\VPStandardStateTP.cpp thermo\WaterProps.cpp thermo\WaterPropsIAPWS.cpp thermo\WaterPropsIAPWSphi.cpp thermo\WaterSSTP.cpp tpx\CarbonDioxide.cpp tpx\Heptane.cpp tpx\HFC134a.cpp tpx\Hydrogen.cpp tpx\lk.cpp tpx\Methane.cpp tpx\Nitrogen.cpp tpx\Oxygen.cpp tpx\RedlichKwong.cpp tpx\Sub.cpp tpx\utils.cpp tpx\Water.cpp transport\DustyGasTransport.cpp transport\GasTransport.cpp transport\HighPressureGasTransport.cpp transport\LiquidTranInteraction.cpp transport\LiquidTransport.cpp transport\LiquidTransportData.cpp transport\LiquidTransportParams.cpp transport\LTPspecies.cpp transport\MixTransport.cpp transport\MMCollisionInt.cpp transport\MultiTransport.cpp transport\SimpleTransport.cpp transport\SolidTransport.cpp transport\SolidTransportData.cpp transport\TransportBase.cpp transport\TransportData.cpp transport\TransportFactory.cpp transport\TransportParams.cpp transport\WaterTransport.cpp zerod\ConstPressureReactor.cpp zerod\FlowDevice.cpp zerod\FlowReactor.cpp zerod\IdealGasConstPressureReactor.cpp zerod\IdealGasReactor.cpp zerod\Reactor.cpp zerod\ReactorBase.cpp zerod\ReactorFactory.cpp zerod\ReactorNet.cpp zerod\Wall.cpp
+         Wall.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 zerod\Wall.cpp(127) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         ReactorNet.cpp
+         ReactorFactory.cpp
+         ReactorBase.cpp
+         Reactor.cpp
+         IdealGasReactor.cpp
+         IdealGasConstPressureReactor.cpp
+         FlowReactor.cpp
+         FlowDevice.cpp
+         ConstPressureReactor.cpp
+         WaterTransport.cpp
+         TransportParams.cpp
+         TransportFactory.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 c:\users\eoin\documents\cantera\cantera---turbulent-flame\include\cantera\transport\GasTransport.h(51) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         TransportData.cpp
+         TransportBase.cpp
+         SolidTransportData.cpp
+         SolidTransport.cpp
+         SimpleTransport.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 transport\SimpleTransport.cpp(278) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         MultiTransport.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 c:\users\eoin\documents\cantera\cantera---turbulent-flame\include\cantera\transport\GasTransport.h(51) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+         MMCollisionInt.cpp
+         Generating Code...
+         Compiling...
+         MixTransport.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 c:\users\eoin\documents\cantera\cantera---turbulent-flame\include\cantera\transport\GasTransport.h(51) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         LTPspecies.cpp
+         LiquidTransportParams.cpp
+         LiquidTransportData.cpp
+         LiquidTransport.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 transport\LiquidTransport.cpp(392) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         LiquidTranInteraction.cpp
+         HighPressureGasTransport.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 c:\users\eoin\documents\cantera\cantera---turbulent-flame\include\cantera\transport\GasTransport.h(51) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         GasTransport.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/transport/GasTransport.h(51) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         DustyGasTransport.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 c:\users\eoin\documents\cantera\cantera---turbulent-flame\include\cantera\base\utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=doublereal *
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 transport\DustyGasTransport.cpp(220) : see reference to function template instantiation 'void Cantera::scale<doublereal*,doublereal*,double>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=double
+                 ]
+         Water.cpp
+         utils.cpp
+         Sub.cpp
+         RedlichKwong.cpp
+         Oxygen.cpp
+         Nitrogen.cpp
+         Methane.cpp
+         lk.cpp
+         Hydrogen.cpp
+         HFC134a.cpp
+         Heptane.cpp
+         Generating Code...
+         Compiling...
+         CarbonDioxide.cpp
+         WaterSSTP.cpp
+         WaterPropsIAPWSphi.cpp
+         WaterPropsIAPWS.cpp
+         WaterProps.cpp
+         VPStandardStateTP.cpp
+         VPSSMgr_Water_HKFT.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\VPSSMgr_Water_HKFT.cpp(69) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         VPSSMgr_Water_ConstVol.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\VPSSMgr_Water_ConstVol.cpp(82) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         VPSSMgr_IdealGas.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\VPSSMgr_IdealGas.cpp(65) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         VPSSMgr_General.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\VPSSMgr_General.cpp(123) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=doublereal *
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\VPSSMgr_General.cpp(124) : see reference to function template instantiation 'void Cantera::scale<doublereal*,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+         VPSSMgr_ConstVol.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\VPSSMgr_ConstVol.cpp(75) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         VPSSMgrFactory.cpp
+         VPSSMgr.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\VPSSMgr.cpp(143) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=doublereal *
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\VPSSMgr.cpp(144) : see reference to function template instantiation 'void Cantera::scale<doublereal*,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+         ThermoPhase.cpp
+     1>thermo\ThermoPhase.cpp(917): warning C4101: 'err' : unreferenced local variable
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\ThermoPhase.cpp(678) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 c:\users\eoin\documents\cantera\cantera---turbulent-flame\include\cantera\base\utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\ThermoPhase.cpp(814) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+         ThermoFactory.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/thermo/ConstDensityThermo.h(74) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 c:\users\eoin\documents\cantera\cantera---turbulent-flame\include\cantera\base\utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/thermo/ConstDensityThermo.h(69) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+         SurfPhase.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\SurfPhase.cpp(140) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=double
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<double>
+                 ]
+                 thermo\SurfPhase.cpp(186) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,double>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=double
+                 ]
+         StoichSubstance.cpp
+         SpeciesThermoInterpType.cpp
+         SpeciesThermoFactory.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/thermo/NasaPoly1.h(133) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         SpeciesThermo.cpp
+         Generating Code...
+         Compiling...
+         Species.cpp
+         SingleSpeciesTP.cpp
+         SemiconductorPhase.cpp
+         RedlichKwongMFTP.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=doublereal *
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\RedlichKwongMFTP.cpp(326) : see reference to function template instantiation 'void Cantera::scale<doublereal*,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(121): warning C4996: 'std::_Inner_product2': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(97) : see declaration of 'std::_Inner_product2'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(150) : see reference to function template instantiation '_Ty std::inner_product<_InIt1,_InIt2,_Ty,std::plus<void>,std::multiplies<void>>(_InIt1,_InIt1,_InIt2,_Ty,_Fn21,_Fn22)' being compiled
+                 with
+                 [
+                     _Ty=double
+         ,            _InIt1=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _InIt2=const doublereal *
+         ,            _Fn21=std::plus<void>
+         ,            _Fn22=std::multiplies<void>
+                 ]
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(108) : see reference to function template instantiation '_Ty std::inner_product<InputIter,InputIter2,double>(_InIt1,_InIt1,_InIt2,_Ty)' being compiled
+                 with
+                 [
+                     _Ty=double
+         ,            InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            InputIter2=const doublereal *
+         ,            _InIt1=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _InIt2=const doublereal *
+                 ]
+                 thermo\RedlichKwongMFTP.cpp(190) : see reference to function template instantiation 'doublereal Cantera::dot<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,const doublereal*>(InputIter,InputIter,InputIter2)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            InputIter2=const doublereal *
+                 ]
+         RedlichKisterVPSSTP.cpp
+         PureFluidPhase.cpp
+     1>thermo\PureFluidPhase.cpp(420): warning C4101: 'e' : unreferenced local variable
+         PhaseCombo_Interaction.cpp
+         Phase.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\Phase.cpp(507) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<double>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<double>
+                 ]
+                 thermo\Phase.cpp(541) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(121): warning C4996: 'std::_Inner_product2': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(97) : see declaration of 'std::_Inner_product2'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(150) : see reference to function template instantiation '_Ty std::inner_product<_InIt1,_InIt2,_Ty,std::plus<void>,std::multiplies<void>>(_InIt1,_InIt1,_InIt2,_Ty,_Fn21,_Fn22)' being compiled
+                 with
+                 [
+                     _Ty=double
+         ,            _InIt1=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _InIt2=const doublereal *
+         ,            _Fn21=std::plus<void>
+         ,            _Fn22=std::multiplies<void>
+                 ]
+                 thermo\Phase.cpp(672) : see reference to function template instantiation '_Ty std::inner_product<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,const doublereal*,double>(_InIt1,_InIt1,_InIt2,_Ty)' being compiled
+                 with
+                 [
+                     _Ty=double
+         ,            _InIt1=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _InIt2=const doublereal *
+                 ]
+         PDSS_Water.cpp
+         PDSS_SSVol.cpp
+         PDSS_IonsFromNeutral.cpp
+         PDSS_IdealGas.cpp
+         PDSS_HKFT.cpp
+         PDSS_ConstVol.cpp
+         PDSS.cpp
+         NasaPoly2.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/thermo/NasaPoly1.h(133) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         Nasa9PolyMultiTempRegion.cpp
+         Nasa9Poly1.cpp
+         Mu0Poly.cpp
+         MolarityIonicVPSSTP.cpp
+     1>thermo\MolarityIonicVPSSTP.cpp(404): warning C4101: 'e' : unreferenced local variable
+         Generating Code...
+         Compiling...
+         MolalityVPSSTP.cpp
+     1>thermo\MolalityVPSSTP.cpp(481): warning C4101: 'e' : unreferenced local variable
+         MixtureFugacityTP.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\MixtureFugacityTP.cpp(102) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\MixtureFugacityTP.cpp(143) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+         MixedSolventElectrolyte.cpp
+         MineralEQ3.cpp
+         MetalSHEelectrons.cpp
+         MaskellSolidSolnPhase.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\MaskellSolidSolnPhase.cpp(152) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         MargulesVPSSTP.cpp
+         LatticeSolidPhase.cpp
+         LatticePhase.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\LatticePhase.cpp(217) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\LatticePhase.cpp(165) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+         IonsFromNeutralVPSSTP.cpp
+         IdealSolnGasVPSS.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=doublereal *
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\IdealSolnGasVPSS.cpp(206) : see reference to function template instantiation 'void Cantera::scale<doublereal*,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=doublereal *
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(121): warning C4996: 'std::_Inner_product2': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(97) : see declaration of 'std::_Inner_product2'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(150) : see reference to function template instantiation '_Ty std::inner_product<_InIt1,_InIt2,_Ty,std::plus<void>,std::multiplies<void>>(_InIt1,_InIt1,_InIt2,_Ty,_Fn21,_Fn22)' being compiled
+                 with
+                 [
+                     _Ty=double
+         ,            _InIt1=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _InIt2=const doublereal *
+         ,            _Fn21=std::plus<void>
+         ,            _Fn22=std::multiplies<void>
+                 ]
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(108) : see reference to function template instantiation '_Ty std::inner_product<InputIter,InputIter2,double>(_InIt1,_InIt1,_InIt2,_Ty)' being compiled
+                 with
+                 [
+                     _Ty=double
+         ,            InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            InputIter2=const doublereal *
+         ,            _InIt1=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _InIt2=const doublereal *
+                 ]
+                 thermo\IdealSolnGasVPSS.cpp(123) : see reference to function template instantiation 'doublereal Cantera::dot<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,const doublereal*>(InputIter,InputIter,InputIter2)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            InputIter2=const doublereal *
+                 ]
+         IdealSolidSolnPhase.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\IdealSolidSolnPhase.cpp(364) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\IdealSolidSolnPhase.cpp(307) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(121): warning C4996: 'std::_Inner_product2': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(97) : see declaration of 'std::_Inner_product2'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\numeric(150) : see reference to function template instantiation '_Ty std::inner_product<_InIt1,_InIt2,_Ty,std::plus<void>,std::multiplies<void>>(_InIt1,_InIt1,_InIt2,_Ty,_Fn21,_Fn22)' being compiled
+                 with
+                 [
+                     _Ty=double
+         ,            _InIt1=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _InIt2=const doublereal *
+         ,            _Fn21=std::plus<void>
+         ,            _Fn22=std::multiplies<void>
+                 ]
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(108) : see reference to function template instantiation '_Ty std::inner_product<InputIter,InputIter2,double>(_InIt1,_InIt1,_InIt2,_Ty)' being compiled
+                 with
+                 [
+                     _Ty=double
+         ,            InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            InputIter2=const doublereal *
+         ,            _InIt1=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _InIt2=const doublereal *
+                 ]
+                 thermo\IdealSolidSolnPhase.cpp(141) : see reference to function template instantiation 'doublereal Cantera::dot<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,const doublereal*>(InputIter,InputIter,InputIter2)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            InputIter2=const doublereal *
+                 ]
+         IdealMolalSoln.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\IdealMolalSoln.cpp(286) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         IdealGasPhase.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\IdealGasPhase.cpp(161) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 thermo\IdealGasPhase.cpp(99) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+         HMWSoln_input.cpp
+     1>thermo\HMWSoln_input.cpp(47): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(304) : see declaration of 'sscanf'
+         HMWSoln.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\HMWSoln.cpp(575) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         GibbsExcessVPSSTP.cpp
+         GeneralSpeciesThermo.cpp
+         FixedChemPotSSTP.cpp
+         Elements.cpp
+         Generating Code...
+         Compiling...
+         DebyeHuckel.cpp
+     1>thermo\DebyeHuckel.cpp(437): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(304) : see declaration of 'sscanf'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 thermo\DebyeHuckel.cpp(269) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         ConstDensityThermo.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/thermo/ConstDensityThermo.h(74) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/thermo/ConstDensityThermo.h(69) : see reference to function template instantiation 'void Cantera::scale<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*,doublereal>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+         ,            OutputIter=doublereal *
+         ,            S=doublereal
+                 ]
+         ConstCpPoly.cpp
+         StFlow.cpp
+     1>oned\StFlow.cpp(875): warning C4800: 'double' : forcing value to bool 'true' or 'false' (performance warning)
+     1>oned\StFlow.cpp(889): warning C4800: 'double' : forcing value to bool 'true' or 'false' (performance warning)
+         Sim1D.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/oneD/Sim1D.h(142) : see reference to function template instantiation '_OutIt std::copy<const doublereal*,double*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=double *
+         ,            _InIt=const doublereal *
+                 ]
+         refine.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 oned\refine.cpp(237) : see reference to function template instantiation '_OutIt std::copy<const doublereal*,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=const doublereal *
+                 ]
+         OneDim.cpp
+     1>oned\OneDim.cpp(364): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\time.inl(112) : see declaration of 'localtime'
+     1>oned\OneDim.cpp(379): warning C4996: 'asctime': This function or variable may be unsafe. Consider using asctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\time.h(174) : see declaration of 'asctime'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 oned\OneDim.cpp(332) : see reference to function template instantiation '_OutIt std::copy<doublereal*,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=doublereal *
+                 ]
+         MultiNewton.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 oned\MultiNewton.cpp(303) : see reference to function template instantiation '_OutIt std::copy<doublereal*,double*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=double *
+         ,            _InIt=doublereal *
+                 ]
+         MultiJac.cpp
+         Domain1D.cpp
+         boundaries1D.cpp
+         SquareMatrix.cpp
+         RootFind.cpp
+     1>numerics\RootFind.cpp(197): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+         ResidJacEval.cpp
+         polyfit.cpp
+         ODE_integrators.cpp
+     1>C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/numerics/CVodesIntegrator.h(12): fatal error C1083: Cannot open include file: 'sundials/sundials_nvector.h': No such file or directory
+         IDA_Solver.cpp
+     1>C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/numerics/IDA_Solver.h(13): fatal error C1083: Cannot open include file: 'sundials/sundials_nvector.h': No such file or directory
+         GeneralMatrix.cpp
+         funcs.cpp
+         Func1.cpp
+         Generating Code...
+         Compiling...
+         DenseMatrix.cpp
+         DAE_solvers.cpp
+     1>C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/numerics/IDA_Solver.h(13): fatal error C1083: Cannot open include file: 'sundials/sundials_nvector.h': No such file or directory
+         CVodesIntegrator.cpp
+     1>C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/numerics/CVodesIntegrator.h(12): fatal error C1083: Cannot open include file: 'sundials/sundials_nvector.h': No such file or directory
+         BandMatrix.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 numerics\BandMatrix.cpp(237) : see reference to function template instantiation '_OutIt std::copy<const doublereal*,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=const doublereal *
+                 ]
+         xmlmethods.cpp
+     1>matlab\xmlmethods.cpp(5): fatal error C1083: Cannot open include file: 'clib/ctxml.h': No such file or directory
+         wallmethods.cpp
+     1>matlab\wallmethods.cpp(5): fatal error C1083: Cannot open include file: 'clib/ctreactor.h': No such file or directory
+         transportmethods.cpp
+     1>matlab\transportmethods.cpp(3): fatal error C1083: Cannot open include file: 'clib/ct.h': No such file or directory
+         thermomethods.cpp
+     1>matlab\thermomethods.cpp(5): fatal error C1083: Cannot open include file: 'clib/ct.h': No such file or directory
+         surfmethods.cpp
+     1>c:\users\eoin\documents\cantera\cantera---turbulent-flame\src\matlab\ctmatutils.h(14): fatal error C1083: Cannot open include file: 'mex.h': No such file or directory
+         reactornetmethods.cpp
+     1>matlab\reactornetmethods.cpp(5): fatal error C1083: Cannot open include file: 'clib/ctreactor.h': No such file or directory
+         reactormethods.cpp
+     1>matlab\reactormethods.cpp(5): fatal error C1083: Cannot open include file: 'clib/ctreactor.h': No such file or directory
+         phasemethods.cpp
+     1>c:\users\eoin\documents\cantera\cantera---turbulent-flame\src\matlab\ctmatutils.h(14): fatal error C1083: Cannot open include file: 'mex.h': No such file or directory
+         onedimmethods.cpp
+     1>c:\users\eoin\documents\cantera\cantera---turbulent-flame\src\matlab\ctmatutils.h(14): fatal error C1083: Cannot open include file: 'mex.h': No such file or directory
+         mixturemethods.cpp
+     1>matlab\mixturemethods.cpp(6): fatal error C1083: Cannot open include file: 'clib/ctmultiphase.h': No such file or directory
+         kineticsmethods.cpp
+     1>c:\users\eoin\documents\cantera\cantera---turbulent-flame\src\matlab\ctmatutils.h(14): fatal error C1083: Cannot open include file: 'mex.h': No such file or directory
+         funcmethods.cpp
+     1>c:\users\eoin\documents\cantera\cantera---turbulent-flame\src\matlab\ctmatutils.h(14): fatal error C1083: Cannot open include file: 'mex.h': No such file or directory
+         flowdevicemethods.cpp
+     1>c:\users\eoin\documents\cantera\cantera---turbulent-flame\src\matlab\ctmatutils.h(14): fatal error C1083: Cannot open include file: 'mex.h': No such file or directory
+         ctmethods.cpp
+     1>matlab\ctmethods.cpp(14): fatal error C1083: Cannot open include file: 'clib/ct.h': No such file or directory
+         ctfunctions.cpp
+     1>matlab\ctfunctions.cpp(7): fatal error C1083: Cannot open include file: 'clib/ct.h': No such file or directory
+         solveSP.cpp
+     1>kinetics\solveSP.cpp(755): warning C4101: 'i' : unreferenced local variable
+         Generating Code...
+         Compiling...
+         RxnRates.cpp
+         ReactionPath.cpp
+         Reaction.cpp
+         KineticsFactory.cpp
+         Kinetics.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 kinetics\Kinetics.cpp(321) : see reference to function template instantiation '_OutIt std::copy<const doublereal*,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=const doublereal *
+                 ]
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+         InterfaceKinetics.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 kinetics\InterfaceKinetics.cpp(190) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         importKinetics.cpp
+         ImplicitSurfChem.cpp
+         Group.cpp
+         GasKinetics.cpp
+         FalloffFactory.cpp
+         Falloff.cpp
+         BulkKinetics.cpp
+         AqueousKinetics.cpp
+         fctxml.cpp
+     1>fortran\fctxml.cpp(8): fatal error C1083: Cannot open include file: 'clib/clib_defs.h': No such file or directory
+         fct.cpp
+     1>fortran\fct.cpp(15): fatal error C1083: Cannot open include file: 'clib/Cabinet.h': No such file or directory
+         vcs_VolPhase.cpp
+     1>equil\vcs_VolPhase.cpp(830): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_VolPhase.cpp(833): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_VolPhase.cpp(836): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_VolPhase.cpp(839): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_VolPhase.cpp(842): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_VolPhase.cpp(845): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_VolPhase.cpp(848): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_VolPhase.cpp(851): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+         vcs_util.cpp
+         vcs_TP.cpp
+         vcs_species_thermo.cpp
+         Generating Code...
+         Compiling...
+         vcs_SpeciesProperties.cpp
+         vcs_solve_TP.cpp
+     1>equil\vcs_solve_TP.cpp(198): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+     1>equil\vcs_solve_TP.cpp(509): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(533): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(538): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(541): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(554): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(587): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(602): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(660): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(669): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(694): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(706): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(747): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(753): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(1445): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_solve_TP.cpp(1510): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 equil\vcs_solve_TP.cpp(2204) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,double[]>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=double []
+         ,            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         vcs_solve_phaseStability.cpp
+         vcs_solve.cpp
+         vcs_setMolesLinProg.cpp
+         vcs_rxnadj.cpp
+     1>equil\vcs_rxnadj.cpp(49): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(54): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(74): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(78): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(82): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(88): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(93): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(103): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(116): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(152): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(165): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(170): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(181): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(235): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(260): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(262): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(318): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(327): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(332): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(341): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(352): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(563): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(571): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(648): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>equil\vcs_rxnadj.cpp(652): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+         vcs_report.cpp
+         vcs_rearrange.cpp
+         vcs_prob.cpp
+     1>equil\vcs_prob.cpp(344): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+         vcs_prep.cpp
+         vcs_phaseStability.cpp
+     1>equil\vcs_phaseStability.cpp(217): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>equil\vcs_phaseStability.cpp(231): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>equil\vcs_phaseStability.cpp(235): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>equil\vcs_phaseStability.cpp(239): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+         vcs_nondim.cpp
+         vcs_MultiPhaseEquil.cpp
+     1>equil\vcs_MultiPhaseEquil.cpp(574): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+         vcs_inest.cpp
+         vcs_Gibbs.cpp
+         vcs_elem_rearrange.cpp
+         vcs_elem.cpp
+         MultiPhaseEquil.cpp
+     1>equil\MultiPhaseEquil.cpp(693): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+         MultiPhase.cpp
+     1>equil\MultiPhase.cpp(628): warning C4101: 'err' : unreferenced local variable
+     1>equil\MultiPhase.cpp(675): warning C4101: 'err' : unreferenced local variable
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 equil\MultiPhase.cpp(432) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,doublereal*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=doublereal *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+         ChemEquil.cpp
+         Generating Code...
+         Compiling...
+         BasisOptimize.cpp
+         ctxml.cpp
+     1>clib\ctxml.cpp(120): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(195) : see declaration of 'strncpy'
+     1>clib\ctxml.cpp(155): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(195) : see declaration of 'strncpy'
+     1>clib\ctxml.cpp(166): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(195) : see declaration of 'strncpy'
+         ctsurf.cpp
+         ctrpath.cpp
+         ctreactor.cpp
+         ctonedim.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/oneD/Sim1D.h(142) : see reference to function template instantiation '_OutIt std::copy<const doublereal*,double*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=double *
+         ,            _InIt=const doublereal *
+                 ]
+         ctmultiphase.cpp
+         ctfunc.cpp
+         ct.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 clib\ct.cpp(264) : see reference to function template instantiation '_OutIt std::copy<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>,double*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=double *
+         ,            _InIt=std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<double>>>
+                 ]
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1026): warning C4996: 'std::_Transform1': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\algorithm(1007) : see declaration of 'std::_Transform1'
+                 C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\include\cantera/base/utilities.h(131) : see reference to function template instantiation '_OutIt std::transform<InputIter,OutputIter,Cantera::timesConstant<S>>(_InIt,_InIt,_OutIt,_Fn1)' being compiled
+                 with
+                 [
+                     _OutIt=double *
+         ,            InputIter=double *
+         ,            OutputIter=double *
+         ,            S=doublereal
+         ,            _InIt=double *
+         ,            _Fn1=Cantera::timesConstant<doublereal>
+                 ]
+                 clib\ct.cpp(1186) : see reference to function template instantiation 'void Cantera::scale<double*,double*,double>(InputIter,InputIter,OutputIter,S)' being compiled
+                 with
+                 [
+                     InputIter=double *
+         ,            OutputIter=double *
+         ,            S=double
+                 ]
+         xml.cpp
+         ValueCache.cpp
+         stringUtils.cpp
+     1>base\stringUtils.cpp(34): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(346) : see declaration of '_snprintf'
+     1>base\stringUtils.cpp(47): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(346) : see declaration of '_snprintf'
+     1>base\stringUtils.cpp(70): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(346) : see declaration of '_snprintf'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2132): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xutility(2113) : see declaration of 'std::_Copy_impl'
+                 base\stringUtils.cpp(371) : see reference to function template instantiation '_OutIt std::copy<const char*,char*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=char *
+         ,            _InIt=const char *
+                 ]
+         plots.cpp
+         global.cpp
+     1>base\global.cpp(159): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdlib.h(462) : see declaration of 'getenv'
+         ctml.cpp
+         ctexceptions.cpp
+         ct2ctml.cpp
+     1>base\ct2ctml.cpp(42): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdlib.h(462) : see declaration of 'getenv'
+         clockWC.cpp
+         checkFinite.cpp
+         application.cpp
+     1>base\application.cpp(344): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdlib.h(462) : see declaration of 'getenv'
+     1>base\application.cpp(350): warning C4996: 'putenv': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _putenv. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdlib.h(941) : see declaration of 'putenv'
+     1>base\application.cpp(370): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdlib.h(462) : see declaration of 'getenv'
+     1>base\application.cpp(371): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdlib.h(462) : see declaration of 'getenv'
+     1>base\application.cpp(418): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdlib.h(462) : see declaration of 'getenv'
+     1>base\application.cpp(420): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdlib.h(462) : see declaration of 'getenv'
+         Generating Code...
+     1>Done Building Project "C:\Users\Eoin\Documents\Cantera\Cantera---Turbulent-Flame\src\Turbulent Flame.vcxproj" (Rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:01:47.91

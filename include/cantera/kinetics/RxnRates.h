@@ -15,6 +15,37 @@
 namespace Cantera
 {
 
+	//! Turbulent reaction rate correction coefficient
+
+static doublereal Cc(doublereal m_b, doublereal m_E, doublereal recipT, doublereal TprimeOverT) {
+
+		doublereal R_const = 1.9872041, t1, t2, t3, t4, t5, t6, t7, ta;
+		doublereal recipT2 = pow(recipT, 2), m_E2 = pow(m_E, 2), TPOT2 = pow(TprimeOverT, 2), R2 = pow(1.9872041, 2);
+		doublereal recipT3 = pow(recipT, 3), m_E3 = pow(m_E, 3), TPOT3 = pow(TprimeOverT, 3), R3 = pow(1.9872041, 3);
+		doublereal recipT4 = pow(recipT, 4), m_E4 = pow(m_E, 4), TPOT4 = pow(TprimeOverT, 4), R4 = pow(1.9872041, 4);
+		doublereal recipT5 = pow(recipT, 5), m_E5 = pow(m_E, 5), TPOT5 = pow(TprimeOverT, 5), R5 = pow(1.9872041, 5);
+		doublereal recipT6 = pow(recipT, 6), m_E6 = pow(m_E, 6), TPOT6 = pow(TprimeOverT, 6), R6 = pow(1.9872041, 6);
+		doublereal recipT7 = pow(recipT, 7), m_E7 = pow(m_E, 7), TPOT7 = pow(TprimeOverT, 7), R7 = pow(1.9872041, 6);
+
+		t1 = (((((m_b*R_const) + m_E)*recipT)*TprimeOverT) / (R_const));
+		t2 = (((R2*m_b*(m_b - 1)) + (2 * m_E*R_const*(m_b - 1)*recipT) + (m_E2*recipT2)) / (2 * R2))*TPOT2;
+		t3 = (((R3*m_b*(m_b - 1)*(m_b - 2)) + (3 * m_E*R2*(m_b - 1)*(m_b - 2)*recipT) + (3 * m_E2*R_const*(m_b - 2)*recipT2) + (m_E3*recipT3)) / (6 * R3))*TPOT3;
+		t4 = ((((((R4*m_b*(m_b - 1)*(m_b - 2))*(m_b - 3)) + (4 * m_E*R3*(m_b - 1)*(m_b - 2))*(m_b - 3)*recipT) + (6 * m_E2*R2*(m_b - 2))*(m_b - 3)*recipT2) + (4 * m_E3*R_const*(m_b - 3)*recipT3) + (m_E4*recipT4)) / (24 * R4))*TPOT4;
+		t5 = ((((((R5*m_b*(m_b - 1)*(m_b - 2))*(m_b - 3)*(m_b - 4)) + (5 * m_E*R4*(m_b - 1)*(m_b - 2))*(m_b - 3)*(m_b - 4)*recipT) + (10 * m_E2*R3*(m_b - 2))*(m_b - 3)*(m_b - 4)*recipT2) + (10 * m_E3*R2*(m_b - 3)*(m_b - 4)*recipT3) + (5 * m_E4*R_const*(m_b - 4)*recipT4) + (m_E5*recipT5)) / (120 * R5))*TPOT5;
+		t6 = ((((((R6*m_b*(m_b - 1)*(m_b - 2))*(m_b - 3)*(m_b - 4)*(m_b - 5)) + (6 * m_E*R5*(m_b - 1)*(m_b - 2))*(m_b - 3)*(m_b - 4)*(m_b - 5)*recipT) + (15 * m_E2*R4*(m_b - 2))*(m_b - 3)*(m_b - 4)*(m_b - 5)*recipT2) + (20 * m_E3*R3*(m_b - 3)*(m_b - 4)*(m_b - 5)*recipT3) + (15 * m_E4*R2*(m_b - 4)*(m_b - 5)*recipT4) + (6 * m_E5*R_const*(m_b - 5)*recipT5) + (m_E6*recipT6)) / (720 * R6))*TPOT6;
+		t7 = ((((((R7*m_b*(m_b - 1)*(m_b - 2))*(m_b - 3)*(m_b - 4)*(m_b - 5)*(m_b - 6)) + (7 * m_E*R6*(m_b - 1)*(m_b - 2))*(m_b - 3)*(m_b - 4)*(m_b - 5)*(m_b - 6)*recipT) + (21 * m_E2*R5*(m_b - 2))*(m_b - 3)*(m_b - 4)*(m_b - 5)*(m_b - 6)*recipT2) + (35 * m_E3*R4*(m_b - 3)*(m_b - 4)*(m_b - 5)*(m_b - 6)*recipT3) + (35 * m_E4*R3*(m_b - 4)*(m_b - 5)*(m_b - 6)*recipT4) + (21 * m_E5*R2*(m_b - 5)*(m_b - 6)*recipT5)) + (7 * m_E6*R_const*(m_b - 6)*recipT6) + (m_E7*recipT7)) / (5040 * R7)*TPOT7;
+		ta = (((R2*m_b*(m_b)) - (R2*m_b) + (2 * m_E*R_const*(m_b - 1)*recipT) + (m_E2*recipT2)) / (4 * R2))*TPOT2;;
+
+		doublereal CorrectionCoefficient = 1 + t1 + t2 + t3 + t4 + t5 + t6 + t7;
+
+		if (CorrectionCoefficient>1.e5){
+			CorrectionCoefficient = 1.e5;
+		}
+
+		return CorrectionCoefficient;
+	}
+
+
 class Array2D;
 
 //! Arrhenius reaction rate type depends only on temperature
@@ -68,12 +99,25 @@ public:
     doublereal updateRC(doublereal logT, doublereal recipT) const {
         return m_A * std::exp(m_b*logT - m_E*recipT);
     }
+	//Update the value of the turbulent rate constant.
+
+	doublereal updateTurbulent(doublereal logT, doublereal recipT, doublereal TprimeOverT) const {
+		return  (updateRC(logT, recipT))*(Cc_return(recipT, TprimeOverT));
+	}
 
     //! Return the pre-exponential factor *A* (in m, kmol, s to powers depending
     //! on the reaction order)
     double preExponentialFactor() const {
         return m_A;
     }
+
+	double Cc_return( doublereal recipT, doublereal TprimeOverT)const {
+		return Cc(temperatureExponent(), activationEnergy_R(), recipT, TprimeOverT);
+	}
+
+	double Cc_Out(doublereal recipT, doublereal TprimeOverT)const {
+		return Cc(0, 6500, recipT, TprimeOverT);
+	}
 
     //! Return the temperature exponent *b*
     double temperatureExponent() const {
@@ -261,6 +305,51 @@ public:
         return std::exp(log_k1 + (log_k2-log_k1) * (logP_-logP1_) * rDeltaP_);
     }
 
+	/**
+	* Update the value of the logarithm of the turbulent rate constant.
+	*/
+	doublereal updateTurbLog(doublereal logT, doublereal recipT, doublereal TprimeOverT) const {
+		double log_k1, log_k2;
+		if (ilow1_ == ilow2_) {
+			log_k1 = rates_[ilow1_].updateLog(logT, recipT) * rates_[ilow1_].Cc_return(recipT, TprimeOverT);
+		}
+		else {
+			double k = 1e-300; // non-zero to make log(k) finite
+			double kTurb = 1e-300;
+			for (size_t i = ilow1_; i < ilow2_; i++) {
+				k += rates_[i].updateRC(logT, recipT);
+				kTurb += k + (k * rates_[ilow1_].Cc_return(recipT, TprimeOverT));
+				
+			}
+			log_k1 = std::log(kTurb);
+		}
+
+		if (ihigh1_ == ihigh2_) {
+			log_k2 = rates_[ihigh1_].updateLog(logT, recipT)* rates_[ihigh1_].Cc_return(recipT, TprimeOverT);
+		}
+		else {
+			double k = 1e-300; // non-zero to make log(k) finite
+			double kTurb = 1e-300;
+			for (size_t i = ihigh1_; i < ihigh2_; i++) {
+				k += rates_[i].updateRC(logT, recipT);
+				kTurb += k + k*rates_[ihigh1_].Cc_return(recipT, TprimeOverT);
+				
+			}
+			log_k2 = std::log(kTurb);
+		}
+
+		return std::exp(log_k1 + (log_k2 - log_k1) * (logP_ - logP1_) * rDeltaP_);
+	}
+
+	/**
+	* Update the value the turbulent rate constant.
+	*
+	* This function returns the actual value of the turbulent rate constant.
+	*/
+	doublereal updateTurbulent(doublereal logT, doublereal recipT, doublereal TprimeOverT) const {
+		return std::exp(updateTurbLog(logT, recipT, TprimeOverT));
+	}
+
     //! Check to make sure that the rate expression is finite over a range of
     //! temperatures at each interpolation pressure. This is potentially an
     //! issue when one of the Arrhenius expressions at a particular pressure
@@ -355,6 +444,10 @@ public:
         }
         return std::pow(10, logk);
     }
+
+	doublereal updateTurbulent(doublereal logT, doublereal recipT, doublereal TprimeOverT) const {
+		throw CanteraError("ChebyshevRate::updateTurbulent", "Not implemented");
+	}
 
     //! Minimum valid temperature [K]
     double Tmin() const {

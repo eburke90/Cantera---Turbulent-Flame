@@ -11,6 +11,7 @@
 #include "cantera/base/Array.h"
 #include "cantera/thermo/IdealGasPhase.h"
 #include "cantera/kinetics/Kinetics.h"
+#include "cantera/kinetics/RxnRates.h"
 
 namespace Cantera
 {
@@ -482,10 +483,10 @@ protected:
     }
 
 	doublereal divHeatFlux(const doublereal* x, size_t j) const {
-		//doublereal c1 = ((m_tcon[j-1])+(((m_cp[j-1]*m_rho[j-1]*m_TKE*m_TKE*0.09)/(0.85*m_ED))))*(T(x,j) - T(x,j-1));
-		//doublereal c2 = ((m_tcon[j])+(((m_cp[j]*m_rho[j]*m_TKE*m_TKE*0.09)/(0.85*m_ED))))*(T(x,j+1) - T(x,j));
-		doublereal c1 = ((m_tcon[j-1]))*(T(x,j) - T(x,j-1));
-		doublereal c2 = ((m_tcon[j]))*(T(x,j+1) - T(x,j));      
+		doublereal c1 = ((m_tcon[j-1])+(((m_cp[j-1]*m_rho[j-1]*m_TKE*m_TKE*0.09)/(0.85*m_ED))))*(T(x,j) - T(x,j-1));
+		doublereal c2 = ((m_tcon[j])+(((m_cp[j]*m_rho[j]*m_TKE*m_TKE*0.09)/(0.85*m_ED))))*(T(x,j+1) - T(x,j));
+		//doublereal c1 = ((m_tcon[j-1]))*(T(x,j) - T(x,j-1));
+		//doublereal c2 = ((m_tcon[j]))*(T(x,j+1) - T(x,j));      
 		return -2.0*(c2/(z(j+1) - z(j)) - c1/(z(j) - z(j-1)))/(z(j+1) - z(j-1));
     }
 
@@ -576,6 +577,7 @@ protected:
     IdealGasPhase* m_thermo;
     Kinetics* m_kin;
     Transport* m_trans;
+	Arrhenius* m_arrh;
 
     MultiJac* m_jac;
 

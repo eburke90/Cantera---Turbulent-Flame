@@ -9,6 +9,7 @@
 #include "cantera/kinetics/EdgeKinetics.h"
 #include "cantera/kinetics/importKinetics.h"
 #include "cantera/kinetics/AqueousKinetics.h"
+#include "cantera/kinetics/TurbulentKinetics.h"
 #include "cantera/base/xml.h"
 
 using namespace std;
@@ -50,6 +51,8 @@ Kinetics* KineticsFactory::newKinetics(const string& model)
         return new EdgeKinetics();
     } else if (lcmodel == "aqueouskinetics") {
         return new AqueousKinetics();
+	}	else if (lcmodel == "turbulentkinetics") {
+		return new TurbulentKinetics();
     } else {
         throw UnknownKineticsModel("KineticsFactory::newKinetics", model);
     }
